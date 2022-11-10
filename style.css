@@ -45,12 +45,31 @@ p {
   color: white;
 }
 
+.dropdown {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.test {
+  width: 40vw;
+  height: auto;
+  padding: .5rem 2rem;
+  background-color: red;
+  justify-self: center;
+  
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;  
+  justify-content: space-around;
+}
+
 .bg {
   min-height: 100%;
-  min-width: 1024px;
   /* Above code suggested by https://css-tricks.com/perfect-full-page-background-image/ */
 
-  background-position: right bottom;
+  background-position: center;
+  background-attachment: fixed;
   background-image: url('./jap400k.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
