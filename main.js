@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("alert('test');\nalert('jfladskf');\n\n//# sourceURL=webpack://restaurant/./src/index.js?");
+eval("\n\n//# sourceURL=webpack://restaurant/./src/index.js?");
 
 /***/ })
 
