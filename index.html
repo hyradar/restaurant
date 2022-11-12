@@ -5,23 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
-    <title>Ramen</title>
+    <title>Seafood</title>
+    <script src="script.js" defer></script>
 </head>
-<body>
-    <div class="bg">
-        <div class="dropdown">
-            <div class="test">
-                <div>Home</div>
-                <div>Menu</div>
-                <div>Contact</div>
+<body class = "bg">
+    
+    <!-- Possibly Don't need this if each side floats to it's own corner -->
+    <div class="toprow">
+
+        <div class="title">
+            <div class="titlename">Thelma</div>
+            <div class="established">Since 1929</div>
+        </div>
+
+        <div class="dropdown" data-dropdown>
+            <button class="link" data-dropdown-button>Info</button>
+            <div class="dropdown-menu">
+                <div><a href="">Home</a></div>
+                <div><a href="">Menu</a></div>
+                <div><a href="">Events</a></div>
+                <div><a href="">Contact</a></div>
+                <div><a href="">Dev Notes</a></div>
             </div>
+                
         </div>
         
     </div>
 
-    
-
-    
+    <div class="centerbox">
+        <div class="centertop">Explore and Discover</div>
+        <div class="centerbottom">In Vino Veritas</div>
+    </div>
 
     <div id="content"></div>
     
