@@ -5,6 +5,13 @@
   box-sizing: border-box;
 }
 
+/* Color palate 
+Text: White or maybe the soft yellow from the lanterns
+
+
+*/
+
+
 /* Remove default margin */
 body,
 h1,
@@ -33,6 +40,7 @@ html:focus-within {
 html,
 body {
     height: 100%;
+    width: 100%;
 }
 
 /* Set core body defaults */
@@ -41,36 +49,64 @@ body {
   line-height: 1.5;
 }
 
-p {
-  color: white;
+.toprow {
+  min-width: 100%;
+  height: 10vh;
+  background-color: white;
+  opacity: .4;
+
+  display: flex;
+  justify-content: center;
 }
 
 .dropdown {
   display: flex;
-  width: 100%;
-  justify-content: center;
+  align-content: center;
+  position: relative;
 }
 
-.test {
-  width: 40vw;
-  height: auto;
-  padding: .5rem 2rem;
-  background-color: red;
-  justify-self: center;
-  
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;  
-  justify-content: space-around;
+.dropdown-menu {
+  position:absolute;
+  left: 0;
+  top: calc(100% + .25rem);
+  background-color: white;
+  padding: .75rem;
+  border-radius: .25rem;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .1);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+}
+
+.dropdown-menu.active {
+  opacity: 1;
+}
+
+.link {
+  height: 10vh;
+  text-decoration: none;
+  color: grey;
+}
+
+.dropdown.active > .link,
+.link:hover {
+  color: black;
+}
+
+.dropdown.active > .link + .dropdown-menu {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .bg {
   min-height: 100%;
   /* Above code suggested by https://css-tricks.com/perfect-full-page-background-image/ */
 
-  background-position: center;
+  background-position: right;
   background-attachment: fixed;
-  background-image: url('./jap400k.jpeg');
+  background-image: url('./bgimage\ compressed.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
 }
