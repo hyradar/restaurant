@@ -5,6 +5,11 @@
   box-sizing: border-box;
 }
 
+:root {
+  /* Gold color used in logo */
+  --clr-accent-1: #d7c516;
+}
+
 /* Remove default margin */
 body,
 h1,
@@ -51,6 +56,10 @@ body {
   justify-content: space-between;
 }
 
+.logo {
+  height: 100%;
+}
+
 .dropdown {
   display: flex;
   align-content: center;
@@ -69,22 +78,53 @@ body {
   opacity: 0;
   pointer-events: none;
   transform: translateY(-10px);
-  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+  transition: opacity 250ms ease-in-out, transform 250ms ease-in-out;
+
+  display: flex;
+  flex-direction: column;
+  /* gap: 1.25rem; */
 }
 
 .dropdown-menu.active {
   opacity: 1;
 }
 
-.link {
+.dropdown-item {
+  height: 3.25rem;
+  border-bottom: 1px solid rgb(226, 226, 226);
+  font-size: 1.25rem;
+  width: 100vw;
+
+  display: flex;
+  justify-content: space-between;
+  padding-left: 1rem;
+  padding-right: 2rem;
+}
+
+.dropdown-item a {
+  text-decoration: none;
+  color: black;
+  align-self: center;
+}
+
+.dropdown-item a:hover {
+  color: var(--clr-accent-1);
+}
+
+ul {
+  list-style: none;
+}
+
+.mobilemenubutton {
   height: 10vh;
   text-decoration: none;
-  color: grey;
+  background-color: white;
+  border: none;
 }
 
 /* Adjust so that it stays black when clicked */
-.link:hover {
-  color: black;
+.mobilemenubutton:hover {
+  cursor: pointer;
 }
 
 .dropdown.active > .dropdown-menu {
@@ -93,6 +133,21 @@ body {
   pointer-events: auto;
   width: 100vw;
 }
+
+.centerbox {
+  color: var(--clr-accent-1);
+  margin-top: .75rem;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.centerbox > p{
+  font-size: 1.5rem;
+}
+
+
 
 .bg {
   min-height: 100%;
