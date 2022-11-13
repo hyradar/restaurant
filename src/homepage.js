@@ -1,6 +1,8 @@
 import mobileArrow from './images/mobilearrow.svg';
-import seafraLogo from './images/Seafralogo.svg';
+import seafraLogoBlack from './images/Seafralogo.svg';
+import seafraLogoWhite from './images/seafraLogoWhite.svg';
 import dropDownIcon from './images/dropdownicon.svg';
+
 
 let body = document.querySelector('.bg');
 const content = document.getElementById('content');
@@ -17,7 +19,7 @@ topRow.className = 'toprow';
 let rowAnchor = document.createElement('a');
 let rowLogo = document.createElement('img');
 rowLogo.className = 'logo';
-rowLogo.src = seafraLogo;
+rowLogo.src = seafraLogoBlack;
 rowLogo.alt = 'Seafra Logo';
 
 //Menu Button
@@ -86,3 +88,43 @@ centerBottom.innerHTML = 'The Seafra Seafood Collection'
 centerBox.appendChild(centerTop);
 centerBox.appendChild(centerBottom);
 content.appendChild(centerBox);
+
+//Media Query
+const mediaQueryMin = window.matchMedia('(min-width: 700px)');
+
+function handleMediaQueryMin (e){
+    if (e.matches) {
+        
+        //Delete Button and Dropdown Menu
+        let mobileMenuButton = document.querySelector('.mobilemenubutton');
+        mobileMenuButton.remove();
+        dropDown.remove();
+
+        //Set Seafra Logo to White Version
+        rowLogo.src = seafraLogoWhite;
+
+        //Append menu to Top Row
+        let menuBar = document.createElement('ul');
+        menuBar.className = 'menubar';
+        topRow.appendChild(menuBar);
+
+        //Removes topRow background
+        topRow.style.backgroundColor = "rgba(0, 0, 0, 0)";
+
+        //ReAppend menu items 
+        menuArray.forEach((item)  => {
+            let menuItem = document.createElement('li');
+            menuItem.className = 'menuitem';
+        
+            let itemAnchor = document.createElement('a');
+            itemAnchor.innerHTML = item;
+            itemAnchor.href = '#';
+        
+            menuItem.append(itemAnchor);
+            menuBar.appendChild(menuItem);
+        });
+    }
+}
+
+mediaQueryMin.addListener(handleMediaQueryMin);
+handleMediaQueryMin(mediaQueryMin);

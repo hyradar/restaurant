@@ -111,6 +111,7 @@ body {
   align-self: center;
 }
 
+.menuitem a:hover,
 .dropdown-item a:hover {
   color: var(--clr-accent-1);
 }
@@ -138,6 +139,24 @@ ul {
   width: 100vw;
 }
 
+.menubar {
+  width: 30rem;
+  font-size: 1.3rem;
+  gap: 1rem;
+  margin-right: 5rem;
+
+  display: flex;
+  flex-wrap: none;
+  justify-content: space-around;
+  align-items: center;
+  
+}
+
+.menubar a {
+  text-decoration: none;
+  color: white;
+}
+
 .centerbox {
   color: white;
   margin-top: 1.5rem;
@@ -145,14 +164,19 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
+}
+
+.centerbox > h2{
+  border-bottom: 1px solid #d7c516;
 }
 
 .centerbox :first-child {
-  font-size: 1.5rem;
+  font-size: clamp(.5rem, 5vw + 1rem, 1.5rem);
 }
 
 .centerbox :last-child {
-  font-size: 2rem;
+  font-size: clamp(2rem, 5vw + 1rem, 1.5rem);
 }
 
 .bg {
