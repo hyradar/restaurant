@@ -85,6 +85,10 @@ body {
   /* gap: 1.25rem; */
 }
 
+.dropdown :last-child {
+  padding-bottom: 0;
+}
+
 .dropdown-menu.active {
   opacity: 1;
 }
