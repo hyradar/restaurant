@@ -155,15 +155,13 @@ ul {
   font-size: 2rem;
 }
 
-
-
 .bg {
   min-height: 100%;
   /* Above code suggested by https://css-tricks.com/perfect-full-page-background-image/ */
 
   background-position: right;
   background-attachment: fixed;
-  background-image: url('./bgimage\ compressed.jpeg');
+  background-image: url('./images/bgimage.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
 }

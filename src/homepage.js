@@ -1,5 +1,8 @@
+import mobileArrow from './images/mobilearrow.svg';
+import seafraLogo from './images/Seafralogo.svg';
+import dropDownIcon from './images/dropdownicon.svg';
 
-const body = document.querySelector('.bg');
+let body = document.querySelector('.bg');
 const content = document.getElementById('content');
 let paragraph = document.createElement('p');
 
@@ -14,7 +17,7 @@ topRow.className = 'toprow';
 let rowAnchor = document.createElement('a');
 let rowLogo = document.createElement('img');
 rowLogo.className = 'logo';
-rowLogo.src = 'Seafralogo.svg';
+rowLogo.src = seafraLogo;
 rowLogo.alt = 'Seafra Logo';
 
 //Menu Button
@@ -22,7 +25,7 @@ let mobileMenuButton = document.createElement('button');
 mobileMenuButton.className = 'mobilemenubutton';
 
 let menuButtonImage = document.createElement('img');
-menuButtonImage.src = 'dropdownicon.svg';
+menuButtonImage.src = dropDownIcon;
 menuButtonImage.alt = 'Click here to access dropdown menu in mobile';
 menuButtonImage.setAttribute('data', 'dropdown-button');
 
@@ -59,14 +62,13 @@ menuArray.forEach((item)  => {
     secondAnchor.href = '#';
 
     let arrowImage = document.createElement('img');
-    arrowImage.src = 'mobilearrow.svg';
+    arrowImage.src = mobileArrow;
 
     dropDownItem.append(firstAnchor);
     dropDownItem.append(secondAnchor);
     secondAnchor.append(arrowImage);
     
     dropDownMenu.append(dropDownItem);
-    console.log('firing');
 });
 
 // Generating Center Box
