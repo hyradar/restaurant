@@ -139,7 +139,7 @@ ul {
 }
 
 .centerbox {
-  color: var(--clr-accent-1);
+  color: white;
   margin-top: 1.5rem;
   
   display: flex;
