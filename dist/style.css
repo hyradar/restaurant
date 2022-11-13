@@ -136,15 +136,19 @@ ul {
 
 .centerbox {
   color: var(--clr-accent-1);
-  margin-top: .75rem;
+  margin-top: 1.5rem;
   
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.centerbox > p{
+.centerbox :first-child {
   font-size: 1.5rem;
+}
+
+.centerbox :last-child {
+  font-size: 2rem;
 }
 
 
