@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" lang="en">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
@@ -13,28 +13,25 @@
     <!-- Possibly Don't need this if each side floats to it's own corner -->
     <div class="toprow">
 
-        <div class="title">
-            <div class="titlename">Thelma</div>
-            <div class="established">Since 1929</div>
-        </div>
+            <a href=""><img class="logo" src="Seafralogo.svg" alt="Seafra Logo"></a>
 
-        <button class="link" data-dropdown-button>Info</button>
+        <button class="mobilemenubutton" ><img src="dropdownicon.svg" alt="Click here to access dropdown menu in mobile" data-dropdown-button></button>
     </div>
 
             <!-- Need to change these from divs for accessibility -->
     <div class="dropdown" data-dropdown>
-        <div class="dropdown-menu">
-            <div class="dropdown-item"><a href="">Home</a></div>
-            <div class="dropdown-item"><a href="">Menu</a></div>
-            <div class="dropdown-item"><a href="">Events</a></div>
-            <div class="dropdown-item"><a href="">Contact</a></div>
-            <div class="dropdown-item"><a href="">Dev Notes</a></div>
-        </div>
+        <ul class="dropdown-menu">
+            <li class="dropdown-item"><a href="">Home</a><a href=""><img src="mobilearrow.svg" alt=""></a></li>
+            <li class="dropdown-item"><a href="">Menu</a><a href=""><img src="mobilearrow.svg" alt=""></a></li>
+            <li class="dropdown-item"><a href="">Events</a><a href=""><img src="mobilearrow.svg" alt=""></a></li>
+            <li class="dropdown-item"><a href="">Contact</a><a href=""><img src="mobilearrow.svg" alt=""></a></li>
+            <li class="dropdown-item"><a href="">Dev Notes</a><a href=""><img src="mobilearrow.svg" alt=""></a></li>
+        </ul>
     </div>
 
     <div class="centerbox">
-        <div class="centertop">Explore and Discover</div>
-        <div class="centerbottom">In Vino Veritas</div>
+        <p class="centertop">Explore and Discover Our</p>
+        <p class="centerbottom">Delicious Seafood Collection</p>
     </div>
 
     <div id="content"></div>
