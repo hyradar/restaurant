@@ -1,7 +1,7 @@
 // For explanation, watch https://www.youtube.com/watch?v=S-VeYcOCFZw
 
 document.addEventListener('click', e => {
-    const isDropDownButton = e.target.matches("[data-dropdown-button]");
+    const isDropDownButton = e.target.matches("[data=dropdown-button]");
     if (!isDropDownButton && e.target.closest('[data-dropdown]') != null) return;
 
     let currentDropDown;
