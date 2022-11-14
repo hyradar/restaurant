@@ -2,8 +2,6 @@
 import {generateTopBar} from './topbar.js';
 import {generateMenu} from './menupage.js';
 
-
-
 generateTopBar();
 
 let menuButton = document.getElementById('Menubutton');

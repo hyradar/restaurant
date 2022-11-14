@@ -2,6 +2,7 @@ import mobileArrow from './images/mobilearrow.svg';
 import seafraLogoBlack from './images/Seafralogo.svg';
 import seafraLogoWhite from './images/seafraLogoWhite.svg';
 import dropDownIcon from './images/dropdownicon.svg';
+import {removeDropDown} from './script.js'
 
 export function generateTopBar() {
     const content = document.getElementById('content');
@@ -61,12 +62,14 @@ export function generateTopBar() {
             firstAnchor.innerHTML = item;
             firstAnchor.href = '#';
             firstAnchor.id = item + 'button';
+            firstAnchor.addEventListener('click', removeDropDown);
         
             let secondAnchor = document.createElement('a');
             secondAnchor.href = '#';
         
             let arrowImage = document.createElement('img');
             arrowImage.src = mobileArrow;
+            arrowImage.addEventListener('click', removeDropDown);
         
             //Append array item to dropdown menu
             dropDownItem.append(firstAnchor);
@@ -78,32 +81,31 @@ export function generateTopBar() {
     
     //Starts with Desktop HTML
     if (window.innerWidth >= 700) {
-    
         let menuBar = document.createElement('ul');
-            menuBar.className = 'menubar';
+        menuBar.className = 'menubar';
+
+        //Removes topRow background
+        topRow.style.backgroundColor = "rgba(0, 0, 0, 0)";
+
+        //ReAppend menu items 
+        menuArray.forEach((item)  => {
+            let menuItem = document.createElement('li');
+            menuItem.className = 'menuitem';
+        
+            let itemAnchor = document.createElement('a');
+            itemAnchor.innerHTML = item;
+            itemAnchor.href = '#';
+            itemAnchor.id = item + 'button';
+
+            rowLogo.src = seafraLogoWhite;
+        
+            menuItem.append(itemAnchor);
+            menuBar.appendChild(menuItem);
+        });
     
-            //Removes topRow background
-            topRow.style.backgroundColor = "rgba(0, 0, 0, 0)";
-    
-            //ReAppend menu items 
-            menuArray.forEach((item)  => {
-                let menuItem = document.createElement('li');
-                menuItem.className = 'menuitem';
-            
-                let itemAnchor = document.createElement('a');
-                itemAnchor.innerHTML = item;
-                itemAnchor.href = '#';
-                itemAnchor.id = item + 'button';
-    
-                rowLogo.src = seafraLogoWhite;
-            
-                menuItem.append(itemAnchor);
-                menuBar.appendChild(menuItem);
-            });
-    
-            topRow.appendChild(rowLogo);
-            topRow.appendChild(menuBar);
-            content.appendChild(topRow);
+        topRow.appendChild(rowLogo);
+        topRow.appendChild(menuBar);
+        content.appendChild(topRow);
     }
 
 
@@ -201,18 +203,19 @@ function handleMediaQueryMax (e) {
     menuArray.forEach((item)  => {
         let dropDownItem = document.createElement('li');
         dropDownItem.className = 'dropdown-item';
-        
     
         let firstAnchor = document.createElement('a');
         firstAnchor.innerHTML = item;
         firstAnchor.href = '#';
         firstAnchor.id = item + 'button';
+        firstAnchor.addEventListener('click', removeDropDown);
     
         let secondAnchor = document.createElement('a');
         secondAnchor.href = '#';
     
         let arrowImage = document.createElement('img');
         arrowImage.src = mobileArrow;
+        arrowImage.addEventListener('click', removeDropDown);
     
         dropDownItem.append(firstAnchor);
         dropDownItem.append(secondAnchor);

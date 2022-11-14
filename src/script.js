@@ -13,14 +13,12 @@ document.addEventListener('click', e => {
     } else if (window && e.target.closest('[data-dropdown]') === null && e.target.closest('.dropdown-menu') === null && e.target.closest('.mobilemenubutton') === null) {
         currentDropDown = document.querySelector('.dropdown');
         currentDropDown.classList.remove('active');
-        console.log('window firing');
     };
     
     //Toggles dropdown if button is clicked
     if (isDropDownButton) {
         currentDropDown = document.querySelector('.dropdown');
         currentDropDown.classList.toggle('active');
-        console.log('dropdownriring');
     }
 
     //This code doens't appear to do anything, but didn't want to delete it yet
@@ -29,3 +27,14 @@ document.addEventListener('click', e => {
     //     dropdown.classList.remove('active')
     // })  
 });
+
+//Adds Event Listener to Dropdown Menu Buttons
+export function removeDropDown() {
+    document.addEventListener('click', e => {
+        if ( e.target === this) {
+            let currentDropDown = document.querySelector('.dropdown');
+            currentDropDown.classList.toggle('active');
+        }   
+    });
+
+}
