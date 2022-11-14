@@ -4,8 +4,6 @@ import seafraLogoWhite from './images/seafraLogoWhite.svg';
 import dropDownIcon from './images/dropdownicon.svg';
 
 const content = document.getElementById('content');
-let body = document.querySelector('.bg');
-
 document.title = 'Seafra';
 
 //Generating Top Row
@@ -21,26 +19,27 @@ let menuArray = ['Home', 'Menu', 'Events', 'Contact', 'Dev Notes'];
 //Starts with Mobile HTML
 if (window.innerWidth < 700) {
 
+    //Set Logo Color
     rowLogo.src = seafraLogoBlack;
     
     //Menu Button
     let mobileMenuButton = document.createElement('button');
     mobileMenuButton.className = 'mobilemenubutton';
     
+    //Menu Icon
     let menuButtonImage = document.createElement('img');
     menuButtonImage.src = dropDownIcon;
     menuButtonImage.alt = 'Click here to access dropdown menu in mobile';
     menuButtonImage.setAttribute('data', 'dropdown-button');
     
+    //Append TopRow elements to content Div
     rowAnchor.appendChild(rowLogo);
     mobileMenuButton.appendChild(menuButtonImage);
-    
     topRow.appendChild(rowAnchor);
     topRow.appendChild(mobileMenuButton);
     content.append(topRow);
     
     // Generating DropDown Menu
-    
     let dropDown = document.createElement('div');
     dropDown.className = 'dropdown';
     dropDown.setAttribute('data', 'dropdown');
@@ -48,9 +47,11 @@ if (window.innerWidth < 700) {
     let dropDownMenu = document.createElement('ul');
     dropDownMenu.className = 'dropdown-menu';
     
+    //Append dropdown to content div
     content.appendChild(dropDown);
     dropDown.appendChild(dropDownMenu);
     
+    //Generate menu items via menuArray
     menuArray.forEach((item)  => {
         let dropDownItem = document.createElement('li');
         dropDownItem.className = 'dropdown-item';
@@ -65,6 +66,7 @@ if (window.innerWidth < 700) {
         let arrowImage = document.createElement('img');
         arrowImage.src = mobileArrow;
     
+        //Append array item to dropdown menu
         dropDownItem.append(firstAnchor);
         dropDownItem.append(secondAnchor);
         secondAnchor.append(arrowImage);
@@ -116,7 +118,7 @@ centerBox.appendChild(centerTop);
 centerBox.appendChild(centerBottom);
 content.appendChild(centerBox);
 
-//Media Query
+//Media Queries
 const mediaQueryMax = window.matchMedia('(max-width: 699px');
 const mediaQueryMin = window.matchMedia('(min-width: 700px)');
 
