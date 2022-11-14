@@ -60,6 +60,7 @@ export function generateTopBar() {
             let firstAnchor = document.createElement('a');
             firstAnchor.innerHTML = item;
             firstAnchor.href = '#';
+            firstAnchor.id = item + 'button';
         
             let secondAnchor = document.createElement('a');
             secondAnchor.href = '#';
@@ -92,6 +93,7 @@ export function generateTopBar() {
                 let itemAnchor = document.createElement('a');
                 itemAnchor.innerHTML = item;
                 itemAnchor.href = '#';
+                itemAnchor.id = item + 'button';
     
                 rowLogo.src = seafraLogoWhite;
             
@@ -141,6 +143,7 @@ function handleMediaQueryMin (e){
             let itemAnchor = document.createElement('a');
             itemAnchor.innerHTML = item;
             itemAnchor.href = '#';
+            itemAnchor.id = item + 'button';
         
             menuItem.append(itemAnchor);
             menuBar.appendChild(menuItem);
@@ -198,10 +201,12 @@ function handleMediaQueryMax (e) {
     menuArray.forEach((item)  => {
         let dropDownItem = document.createElement('li');
         dropDownItem.className = 'dropdown-item';
+        
     
         let firstAnchor = document.createElement('a');
         firstAnchor.innerHTML = item;
         firstAnchor.href = '#';
+        firstAnchor.id = item + 'button';
     
         let secondAnchor = document.createElement('a');
         secondAnchor.href = '#';

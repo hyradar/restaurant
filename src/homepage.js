@@ -1,7 +1,14 @@
 
 import {generateTopBar} from './topbar.js';
+import {generateMenu} from './menupage.js';
+
+
 
 generateTopBar();
+
+let menuButton = document.getElementById('Menubutton');
+    menuButton.addEventListener('click', generateMenu);
+
 // Generating Center Box
 let centerBox = document.createElement('div');
 centerBox.className = 'centerbox';
