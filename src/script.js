@@ -35,7 +35,10 @@ export function removeDropDown() {
     document.addEventListener('click', e => {
         if ( e.target === this) {
             let currentDropDown = document.querySelector('.dropdown');
-            currentDropDown.classList.toggle('active');
+            if (currentDropDown) {
+                currentDropDown.classList.toggle('active');
+                console.log('firing removeDropDown function');
+            }
         }   
     });
 

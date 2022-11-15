@@ -4,9 +4,11 @@ import seafraLogoWhite from './images/seafraLogoWhite.svg';
 import dropDownIcon from './images/dropdownicon.svg';
 import {removeDropDown} from './script.js'
 import { generateMenu } from './menupage';
+import { clearContentDiv } from './homepage';
+import { generateHomePage } from './homepage';
 
 export function generateTopBar() {
-    const content = document.getElementById('content');
+    const body = document.querySelector('.bg');
     document.title = 'Seafra';
     
     //Generating Top Row
@@ -40,7 +42,7 @@ export function generateTopBar() {
         mobileMenuButton.appendChild(menuButtonImage);
         topRow.appendChild(rowAnchor);
         topRow.appendChild(mobileMenuButton);
-        content.append(topRow);
+        body.appendChild(topRow);
         
         // Generating DropDown Menu
         let dropDown = document.createElement('div');
@@ -51,7 +53,7 @@ export function generateTopBar() {
         dropDownMenu.className = 'dropdown-menu';
         
         //Append dropdown to content div
-        content.appendChild(dropDown);
+        body.appendChild(dropDown);
         dropDown.appendChild(dropDownMenu);
         
         //Generate menu items via menuArray
@@ -78,6 +80,14 @@ export function generateTopBar() {
             secondAnchor.append(arrowImage);
             dropDownMenu.append(dropDownItem);
         });
+
+        let homeButton = document.getElementById('Homebutton');
+        homeButton.addEventListener('click', clearContentDiv);
+        homeButton.addEventListener('click', generateHomePage);
+    
+        let menuButton = document.getElementById('Menubutton');
+        menuButton.addEventListener('click', clearContentDiv);
+        menuButton.addEventListener('click', generateMenu);
     }
     
     //Starts with Desktop HTML
@@ -106,129 +116,139 @@ export function generateTopBar() {
     
         topRow.appendChild(rowLogo);
         topRow.appendChild(menuBar);
-        content.appendChild(topRow);
+        body.appendChild(topRow);
     }
 
 
-//Media Queries
-const mediaQueryMax = window.matchMedia('(max-width: 699px');
-const mediaQueryMin = window.matchMedia('(min-width: 700px)');
+    //Media Queries
+    const mediaQueryMax = window.matchMedia('(max-width: 699px');
+    const mediaQueryMin = window.matchMedia('(min-width: 700px)');
 
-mediaQueryMax.addListener(handleMediaQueryMax);
-mediaQueryMin.addListener(handleMediaQueryMin);
+    mediaQueryMax.addListener(handleMediaQueryMax);
+    mediaQueryMin.addListener(handleMediaQueryMin);
 
-function handleMediaQueryMin (e){
-    if (e.matches) {
+    function handleMediaQueryMin (e){
+        if (e.matches) {
+            
+            //Delete Button and Dropdown Menu
+            let mobileMenuButton = document.querySelector('.mobilemenubutton');
+            mobileMenuButton.remove();
+
+            let dropDown = document.querySelector('.dropdown');
+            dropDown.remove();
+
+            //Set Seafra Logo to White Version
+            rowLogo.src = seafraLogoWhite;
+
+            //Append menu to Top Row
+            let menuBar = document.createElement('ul');
+            menuBar.className = 'menubar';
+            topRow.appendChild(menuBar);
+
+            //Removes topRow background
+            topRow.style.backgroundColor = "rgba(0, 0, 0, 0)";
+
+            //ReAppend menu items 
+            menuArray.forEach((item)  => {
+                let menuItem = document.createElement('li');
+                menuItem.className = 'menuitem';
+            
+                let itemAnchor = document.createElement('a');
+                itemAnchor.innerHTML = item;
+                itemAnchor.href = '#';
+                itemAnchor.id = item + 'button';
+            
+                menuItem.append(itemAnchor);
+                menuBar.appendChild(menuItem);
+            });
+
+            let homeButton = document.getElementById('Homebutton');
+            homeButton.addEventListener('click', clearContentDiv);
+            homeButton.addEventListener('click', generateHomePage);
         
-        //Delete Button and Dropdown Menu
-        let mobileMenuButton = document.querySelector('.mobilemenubutton');
-        mobileMenuButton.remove();
+            let menuButton = document.getElementById('Menubutton');
+            menuButton.addEventListener('click', clearContentDiv);
+            menuButton.addEventListener('click', generateMenu);
+        }
+    }
 
+    function handleMediaQueryMax (e) {
+        let body = document.querySelector('.bg');
+        let menuBar = document.querySelector('.menubar');
         let dropDown = document.querySelector('.dropdown');
-        dropDown.remove();
+        let mobileMenuButton = document.querySelector('.mobilemenubutton');
+        
+        if (menuBar != 'undefined' && menuBar != null) {
+            menuBar.remove();
+        }
 
-        //Set Seafra Logo to White Version
-        rowLogo.src = seafraLogoWhite;
+        if (dropDown != 'undefined' && dropDown != null) {
+            dropDown.remove();
+        }
+        if (mobileMenuButton != 'undefined' && mobileMenuButton != null) {
+            mobileMenuButton.remove();
+        }
 
-        //Append menu to Top Row
-        let menuBar = document.createElement('ul');
-        menuBar.className = 'menubar';
-        topRow.appendChild(menuBar);
+        rowLogo.src = seafraLogoBlack;
+        
+        //Menu Button
+        mobileMenuButton = document.createElement('button');
+        mobileMenuButton.className = 'mobilemenubutton';
+        
+        let menuButtonImage = document.createElement('img');
+        menuButtonImage.src = dropDownIcon;
+        menuButtonImage.alt = 'Click here to access dropdown menu in mobile';
+        menuButtonImage.setAttribute('data', 'dropdown-button');
+        
+        rowAnchor.appendChild(rowLogo);
+        mobileMenuButton.appendChild(menuButtonImage);
+        
+        topRow.style.backgroundColor = 'white';
+        topRow.appendChild(rowAnchor);
+        topRow.appendChild(mobileMenuButton);
+        let content = document.getElementById('content');
+        body.insertBefore(topRow, content);
+        
+        // Generating DropDown Menu
+        dropDown = document.createElement('div');
+        dropDown.className = 'dropdown';
+        dropDown.setAttribute('data', 'dropdown');
+        
+        let dropDownMenu = document.createElement('ul');
+        dropDownMenu.className = 'dropdown-menu';
 
-        //Removes topRow background
-        topRow.style.backgroundColor = "rgba(0, 0, 0, 0)";
-
-        //ReAppend menu items 
+        dropDown.appendChild(dropDownMenu);
+        body.insertBefore(dropDown, content);
+        
+        //Geneate Dropdown Items
         menuArray.forEach((item)  => {
-            let menuItem = document.createElement('li');
-            menuItem.className = 'menuitem';
+            let dropDownItem = document.createElement('li');
+            dropDownItem.className = 'dropdown-item';
         
-            let itemAnchor = document.createElement('a');
-            itemAnchor.innerHTML = item;
-            itemAnchor.href = '#';
-            itemAnchor.id = item + 'button';
+            let firstAnchor = document.createElement('a');
+            firstAnchor.innerHTML = item;
+            firstAnchor.href = '#';
+            firstAnchor.id = item + 'button';
+            firstAnchor.addEventListener('click', removeDropDown);
         
-            menuItem.append(itemAnchor);
-            menuBar.appendChild(menuItem);
+            let secondAnchor = document.createElement('a');
+            secondAnchor.href = '#';
+        
+            let arrowImage = document.createElement('img');
+            arrowImage.src = mobileArrow;
+            arrowImage.addEventListener('click', removeDropDown);
+        
+            dropDownItem.append(firstAnchor);
+            dropDownItem.append(secondAnchor);
+            secondAnchor.append(arrowImage);
+            dropDownMenu.append(dropDownItem);
         });
-    }
-}
+        let homeButton = document.getElementById('Homebutton');
+        homeButton.addEventListener('click', clearContentDiv);
+        homeButton.addEventListener('click', generateHomePage);
 
-function handleMediaQueryMax (e) {
-    let menuBar = document.querySelector('.menubar');
-    let dropDown = document.querySelector('.dropdown');
-    let mobileMenuButton = document.querySelector('.mobilemenubutton');
-    let centerBox = document.querySelector('.centerbox');
-    if (menuBar != 'undefined' && menuBar != null) {
-        menuBar.remove();
+        let menuButton = document.getElementById('Menubutton');
+        menuButton.addEventListener('click', clearContentDiv);
+        menuButton.addEventListener('click', generateMenu);
     }
-
-    if (dropDown != 'undefined' && dropDown != null) {
-        dropDown.remove();
-    }
-    if (mobileMenuButton != 'undefined' && mobileMenuButton != null) {
-        mobileMenuButton.remove();
-    }
-
-    rowLogo.src = seafraLogoBlack;
-    
-    //Menu Button
-    mobileMenuButton = document.createElement('button');
-    mobileMenuButton.className = 'mobilemenubutton';
-    
-    let menuButtonImage = document.createElement('img');
-    menuButtonImage.src = dropDownIcon;
-    menuButtonImage.alt = 'Click here to access dropdown menu in mobile';
-    menuButtonImage.setAttribute('data', 'dropdown-button');
-    
-    rowAnchor.appendChild(rowLogo);
-    mobileMenuButton.appendChild(menuButtonImage);
-    
-    topRow.style.backgroundColor = 'white';
-    topRow.appendChild(rowAnchor);
-    topRow.appendChild(mobileMenuButton);
-    content.insertBefore(topRow, content.firstChild);
-    
-    // Generating DropDown Menu
-    
-    
-   
-    dropDown = document.createElement('div');
-    dropDown.className = 'dropdown';
-    dropDown.setAttribute('data', 'dropdown');
-    
-    let dropDownMenu = document.createElement('ul');
-    dropDownMenu.className = 'dropdown-menu';
-    
-    //About to do a super un-elegant way of handling this
-    //If there's a CenterBox or a MenuPage, place the dropdown menu before it
-    let menuPage = document.querySelector('.menupagediv');
-    content.insertBefore(dropDown, centerBox);
-    content.insertBefore(dropDown, menuPage)
-
-    dropDown.appendChild(dropDownMenu);
-    
-    menuArray.forEach((item)  => {
-        let dropDownItem = document.createElement('li');
-        dropDownItem.className = 'dropdown-item';
-    
-        let firstAnchor = document.createElement('a');
-        firstAnchor.innerHTML = item;
-        firstAnchor.href = '#';
-        firstAnchor.id = item + 'button';
-        firstAnchor.addEventListener('click', removeDropDown);
-    
-        let secondAnchor = document.createElement('a');
-        secondAnchor.href = '#';
-    
-        let arrowImage = document.createElement('img');
-        arrowImage.src = mobileArrow;
-        arrowImage.addEventListener('click', removeDropDown);
-    
-        dropDownItem.append(firstAnchor);
-        dropDownItem.append(secondAnchor);
-        secondAnchor.append(arrowImage);
-        dropDownMenu.append(dropDownItem);
-    });
-}
 }
