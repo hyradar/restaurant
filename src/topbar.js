@@ -3,6 +3,7 @@ import seafraLogoBlack from './images/Seafralogo.svg';
 import seafraLogoWhite from './images/seafraLogoWhite.svg';
 import dropDownIcon from './images/dropdownicon.svg';
 import {removeDropDown} from './script.js'
+import { generateMenu } from './menupage';
 
 export function generateTopBar() {
     const content = document.getElementById('content');
@@ -186,10 +187,12 @@ function handleMediaQueryMax (e) {
     topRow.style.backgroundColor = 'white';
     topRow.appendChild(rowAnchor);
     topRow.appendChild(mobileMenuButton);
-    content.insertBefore(topRow, centerBox);
+    content.insertBefore(topRow, content.firstChild);
     
     // Generating DropDown Menu
     
+    
+   
     dropDown = document.createElement('div');
     dropDown.className = 'dropdown';
     dropDown.setAttribute('data', 'dropdown');
@@ -197,7 +200,12 @@ function handleMediaQueryMax (e) {
     let dropDownMenu = document.createElement('ul');
     dropDownMenu.className = 'dropdown-menu';
     
+    //About to do a super un-elegant way of handling this
+    //If there's a CenterBox or a MenuPage, place the dropdown menu before it
+    let menuPage = document.querySelector('.menupagediv');
     content.insertBefore(dropDown, centerBox);
+    content.insertBefore(dropDown, menuPage)
+
     dropDown.appendChild(dropDownMenu);
     
     menuArray.forEach((item)  => {

@@ -3,6 +3,7 @@
 document.addEventListener('click', e => {
     let currentDropDown;
     const isDropDownButton = e.target.matches("[data=dropdown-button]");
+    let menubar = document.querySelector('.menubar');
 
     // Makes sure not to close dropdown if user clicks inside it
     if (!isDropDownButton && e.target.closest('[data-dropdown]') != null) {
@@ -10,7 +11,8 @@ document.addEventListener('click', e => {
         
         //Closes Dropdown if Window is Clicked
         //added the check against mobile menu button since both this if and the Toggle if's were firing simultaneously
-    } else if (window && e.target.closest('[data-dropdown]') === null && e.target.closest('.dropdown-menu') === null && e.target.closest('.mobilemenubutton') === null) {
+        //added !menubar since menubar is only in desktop. Before it was still firing in desktop even though there's no dropdown menu in that layout
+    } else if (!menubar && window && e.target.closest('[data-dropdown]') === null && e.target.closest('.dropdown-menu') === null && e.target.closest('.mobilemenubutton') === null) {
         currentDropDown = document.querySelector('.dropdown');
         currentDropDown.classList.remove('active');
     };
