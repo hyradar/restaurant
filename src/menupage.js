@@ -1,4 +1,12 @@
 import {generateTopBar} from './topbar.js';
+import entreesIcon from './images/menuicons/wheat.png';
+import seafoodIcon from './images//menuicons/prawn.png';
+import mainsIcon from './images/menuicons/food-tray.png';
+import saladsIcon from './images/menuicons/salad.png';
+import dessertsIcon from './images/menuicons/cupcake.png';
+
+import entreeCategoryImageMobile from './images/categoryimages/entreecategorymobile.svg';
+import entreeCategoryImageDesktop from './images/categoryimages/entreecategorydesktop.svg';
 
 export function generateMenu() {
     
@@ -25,12 +33,19 @@ export function generateMenu() {
     let menuDiv = document.createElement('div');
     let categoryDiv = document.createElement('div');
     //Will change below to img once I have one
-    let categoryTitleImage = document.createElement('div');
+    let categoryTitleImage = document.createElement('img');
 
     menuDiv.className = 'menudiv';
     categoryDiv.className = 'categorydiv';
     categoryTitleImage.className = 'categorytitleimage';
-    categoryTitleImage.innerHTML = 'this is where the category image will go';
+    
+    if (window.innerWidth >= 700) {
+        categoryTitleImage.src = entreeCategoryImageDesktop;
+    }
+    else {
+        categoryTitleImage.src = entreeCategoryImageMobile;
+    }
+    
     
     //This will be used to house the menu filters
     let filterNav = document.createElement('nav');
@@ -39,22 +54,39 @@ export function generateMenu() {
 
     menuDiv.appendChild(filterNav);
 
-
     //generate food categories
     let optionCarousel = document.createElement('nav');
     let foodCategories = document.createElement('ul');
     optionCarousel.className = 'optionscarousel';
     foodCategories.className = 'foodcategories';
 
-    for (let i = 0; i < 5; i ++) {
+    //Create Food Groups for Menu
+    function createFoodGroup(name, src) {
+        
+        return {
+            name,
+            src
+        }
+    }
+
+    let entrees = createFoodGroup('Entrees', entreesIcon);
+    let seafood = createFoodGroup('Seafood', seafoodIcon);
+    let mains = createFoodGroup('Mains', mainsIcon);
+    let salads = createFoodGroup('Salads', saladsIcon);
+    let desserts = createFoodGroup('Desserts', dessertsIcon);
+
+    //Create Array of different Food Groups
+    let foodArray = [entrees, seafood, mains, salads, desserts];
+    for (let i = 0; i < foodArray.length; i ++) {
         let foodOption = document.createElement('li');
         foodOption.className = 'foodoption';
 
-        //Temporarily a div so I can use InnerHTML
-        let foodOptionImage = document.createElement('div');
+        let foodOptionImage = document.createElement('img');
         let foodOptionTitle = document.createElement('div');
-        foodOptionImage.innerHTML = 'food image';
-        foodOptionTitle.innerHTML = 'food title';
+        foodOptionImage.className = 'foodoptionimage';
+        foodOptionImage.id = foodArray[i].name;
+        foodOptionImage.src = foodArray[i].src;
+        foodOptionTitle.innerHTML = foodArray[i].name;
 
         foodOption.appendChild(foodOptionImage);
         foodOption.appendChild(foodOptionTitle);
@@ -73,7 +105,7 @@ export function generateMenu() {
     menuDiv.appendChild(categoryDiv)
     menuDiv.appendChild(menuTable);
     
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 6; i++) {
         let tableRow = document.createElement('tr');
         menuTable.appendChild(tableRow);
         for (let i = 0; i < 1; i++) {

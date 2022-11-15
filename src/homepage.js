@@ -1,6 +1,5 @@
 import {generateTopBar} from './topbar.js';
 import {generateMenu} from './menupage.js';
-import prawnPic from './images/prawn.jpeg';
 
 //Runs when user first arrives at webpage
 generateTopBar();
@@ -58,4 +57,3 @@ function generateContent() {
     content.id = 'content';
     body.appendChild(content);
 }
-

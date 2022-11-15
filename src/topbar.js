@@ -7,6 +7,10 @@ import { generateMenu } from './menupage';
 import { clearContentDiv } from './homepage';
 import { generateHomePage } from './homepage';
 
+import entreeCategoryImageMobile from './images/categoryimages/entreecategorymobile.svg';
+import entreeCategoryImageDesktop from './images/categoryimages/entreecategorydesktop.svg';
+
+
 export function generateTopBar() {
     const body = document.querySelector('.bg');
     document.title = 'Seafra';
@@ -24,6 +28,10 @@ export function generateTopBar() {
     //Starts with Mobile HTML
     if (window.innerWidth < 700) {
     
+        let categoryTitleImage = document.querySelector('.categorytitleimage');
+        if (categoryTitleImage) {
+            categoryTitleImage.src = entreeCategoryImageMobile;
+        }
         //Set Logo Color
         rowLogo.src = seafraLogoBlack;
         
@@ -88,6 +96,8 @@ export function generateTopBar() {
         let menuButton = document.getElementById('Menubutton');
         menuButton.addEventListener('click', clearContentDiv);
         menuButton.addEventListener('click', generateMenu);
+
+        
     }
     
     //Starts with Desktop HTML
@@ -117,6 +127,11 @@ export function generateTopBar() {
         topRow.appendChild(rowLogo);
         topRow.appendChild(menuBar);
         body.appendChild(topRow);
+
+        let categoryTitleImage = document.querySelector('.categorytitleimage');
+        if (categoryTitleImage) {
+            categoryTitleImage.src = entreeCategoryImageDesktop;
+        }
     }
 
 
@@ -169,6 +184,11 @@ export function generateTopBar() {
             let menuButton = document.getElementById('Menubutton');
             menuButton.addEventListener('click', clearContentDiv);
             menuButton.addEventListener('click', generateMenu);
+
+            let categoryTitleImage = document.querySelector('.categorytitleimage');
+            if (categoryTitleImage) {
+                categoryTitleImage.src = entreeCategoryImageDesktop;
+            }
         }
     }
 
@@ -250,5 +270,11 @@ export function generateTopBar() {
         let menuButton = document.getElementById('Menubutton');
         menuButton.addEventListener('click', clearContentDiv);
         menuButton.addEventListener('click', generateMenu);
+
+        let categoryTitleImage = document.querySelector('.categorytitleimage');
+        if (categoryTitleImage) {
+            categoryTitleImage.src = entreeCategoryImageMobile;
+        }
+
     }
 }
