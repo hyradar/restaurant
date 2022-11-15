@@ -218,11 +218,6 @@ svg {
     font: inherit;
 }
 
-.menutitlecard {
-  width: 80vw;
-  text-align: center;
-}
-
 .menupagediv {
 
   display: flex;
@@ -275,9 +270,22 @@ svg {
   border-radius: 5px;
 }
 
+
+.menutitlecard {
+  width: 80vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .menutitle {
   font-size: 3rem;
   color: white;
+  border-bottom: 1px solid #d7c516;
+  width: 17rem;
+  align-self: center;
+  text-align: center;
+  margin-top: 1rem;
 }
 
 .menutable {
