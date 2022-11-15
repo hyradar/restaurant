@@ -165,8 +165,12 @@ ul {
 }
 
 .centerbox {
+  
+  margin-top: 3em;
+  margin-left: 15em;
+  justify-self: flex-start;
+  align-self: flex-start;
   color: white;
-  margin-top: 1.5rem;
   
   display: flex;
   flex-direction: column;
@@ -174,16 +178,13 @@ ul {
   text-align: center;
 }
 
-.centerbox > h2{
+.centerbox :first-child {
+  font-size: clamp(2rem, 2vw + 1rem, 2.5rem);
   border-bottom: 1px solid #d7c516;
 }
 
-.centerbox :first-child {
-  font-size: clamp(.5rem, 5vw + 1rem, 1.5rem);
-}
-
 .centerbox :last-child {
-  font-size: clamp(2rem, 5vw + 1rem, 1.5rem);
+  font-size: clamp(2rem, 2vw + 1rem, 2.5rem);
 }
 
 .bg {
@@ -302,4 +303,18 @@ tr {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+
+
+@media (max-width: 700px) {
+
+  /* Home Page */
+  .centerbox {
+    margin-top: 3rem;
+    margin-left: 0;
+    justify-self: center;
+    align-self: center;
+  }
+
 }
