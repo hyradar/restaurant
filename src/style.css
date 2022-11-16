@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
+
 /* Box sizing rules */
 *,
 *::before,
@@ -6,8 +8,10 @@
 }
 
 :root {
+  /* Color used in Colored Prawn Icon #E9967A */
   /* Gold color used in logo */
   --clr-accent-1: #d7c516;
+  
 }
 
 /* Remove default margin */
@@ -71,12 +75,12 @@ body {
   display: flex;
   align-content: center;
   position: relative;
-  width: 100vw;
+  width: 100%;
 }
 
 .dropdown-menu {
   position:absolute;
-
+  width: 100%;
   top: 100%;
   background-color: white;
   padding: .75rem;
@@ -104,12 +108,10 @@ body {
   height: 3.25rem;
   border-bottom: 1px solid rgb(226, 226, 226);
   font-size: 1.25rem;
-  width: 100vw;
 
   display: flex;
   justify-content: space-between;
   padding-left: 1rem;
-  padding-right: 2rem;
 }
 
 .dropdown-item a {
@@ -165,7 +167,6 @@ ul {
 }
 
 .centerbox {
-  
   margin-top: 3em;
   margin-left: 15em;
   justify-self: flex-start;
@@ -178,13 +179,51 @@ ul {
   text-align: center;
 }
 
-.centerbox :first-child {
+.centertop {
   font-size: clamp(2rem, 2vw + 1rem, 2.5rem);
   border-bottom: 1px solid #d7c516;
 }
 
-.centerbox :last-child {
-  font-size: clamp(2rem, 2vw + 1rem, 2.5rem);
+.centerbottomdiv {
+  color: #fff;
+  font-size: clamp(2rem, 2vw + 1rem, 3.5rem);
+}
+
+.centerbottomblue {
+  color: rgb(0, 166, 255);
+  animation: animate 6s ease-in-out infinite;
+  transform: translate(0%, -100%);
+}
+
+@keyframes animate {
+  0%,
+  100% {
+    clip-path: polygon(
+      0% 45%,
+      16% 44%,
+      33% 50%,
+      54% 60%,
+      70% 61%,
+      84% 59%,
+      100% 52%,
+      100% 100%,
+      0% 100%
+    );
+  }
+
+  50% {
+    clip-path: polygon(
+      0% 60%,
+      15% 65%,
+      34% 66%,
+      51% 62%,
+      67% 50%,
+      84% 45%,
+      100% 46%,
+      100% 100%,
+      0% 100%
+    );
+  }
 }
 
 .bg {
@@ -219,43 +258,101 @@ svg {
 }
 
 .menupagediv {
-
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  width: 100%;
+}
+
+.infobox {
+  border: 1px solid green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  font-size: clamp(.8rem, 1vw + .8rem, 1.5rem);
+  
+}
+
+.infobox p{
+  padding: .5rem;
 }
 
 .filternav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.filternavinnerdiv {
+  /* width: 282px; */
   width: 100%;
-  height: 3rem;
-  border: 1px solid red;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+}
+
+.filterdiv {
+
+  display: grid;
+  grid-template-columns: 70% 30%;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+  border-left: 1px black;
+  border-style: groove;
+  padding-left: clamp(10px, 1em, 5em);
+  padding-right: clamp(10px, 1em, 5em);
+}
+
+.filterinputlabel {
+  font-size: clamp(.5rem, 1vw + .7rem, 1rem);
+}
+
+
+.optionscarousel {
+  background-color: white;
 }
 
 .foodcategories {
-  height: 4rem;
-  gap: .5rem;
-  padding: .3rem;
+  padding: .5rem;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  justify-content: center;
+  /* grid-template-columns: repeat(5, clamp(7vw, 15vw, 7rem)); */
+  grid-template-columns: repeat(5, 4.8rem);
+  gap: 1rem;
+  border-top: 1px solid black;
 }
 
 .foodoption {
   display: grid;
-  grid-template-rows: repeat(2, 1fr);
-
+  grid-template-rows: 60% 40%;
+  justify-self: center;
   justify-content: center;
 }
 
+.foodoption h3 {
+  font-size: 1.3rem;
+  height: auto;
+}
+
 .foodoptionimage {
-  width: 2rem;
+  width: 3rem;
   justify-self: center;
 }
 
+.foodoptionanchor {
+  color: black;
+  text-decoration: none;
+}
+
 .categorydiv {
-  width: 100%;
   height: 3rem;
   border-top: 1px solid black;
+  background-color: white;
   
   display: flex;
   justify-content: center;
@@ -264,10 +361,10 @@ svg {
 
 .menudiv {
   margin-top: 2rem;
-  height: 20rem;
   background-color: white;
-  border: 5px solid var(--clr-accent-1);
+  border: 3px solid var(--clr-accent-1);
   border-radius: 5px;
+  width: 90%;
 }
 
 
@@ -279,18 +376,16 @@ svg {
 }
 
 .menutitle {
-  font-size: 3rem;
+  font-size: clamp(2.9rem, 2vw + 1rem, 3.5rem);
   color: white;
   border-bottom: 1px solid #d7c516;
-  width: 17rem;
   align-self: center;
   text-align: center;
   margin-top: 1rem;
 }
 
 .menutable {
-  height: 10rem;
-  width: 80vw;
+  width: 100%;
   background-color: white;
 }
 
@@ -302,8 +397,6 @@ td,
 tr {
   border: 1px solid grey;
 }
-
-
 
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
@@ -329,6 +422,18 @@ tr {
     margin-left: 0;
     justify-self: center;
     align-self: center;
+  }
+}
+
+@media (min-width: 700px) {
+
+  .filternavinnerdiv {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  .menudiv {
+    width: 70%;
   }
 
 }
