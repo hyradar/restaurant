@@ -1,18 +1,8 @@
-import {generateTopBar} from './topbar.js';
-import {changeIconColor} from './menulogic.js';
-import entreesIcon from './images/menuicons/wheat.png';
-import entreesIconColor from './images/menuicons/wheatcolor.svg';
-import seafoodIcon from './images//menuicons/prawn.png';
-import seafoodIconColor from './images/menuicons/prawncolor.svg';
-import mainsIcon from './images/menuicons/food-tray.png';
-import mainsIconColor from './images/menuicons/food-traycolor.svg';
-import saladsIcon from './images/menuicons/salad.png';
-import saladsIconColor from './images/menuicons/saladcolor.svg';
-import dessertsIcon from './images/menuicons/cupcake.png';
-import dessertsIconColor from './images/menuicons/cupcakecolor.svg';
 import entreeCategoryImageMobile from './images/categoryimages/entreecategorymobile.svg';
-import entreeCategoryImageDesktop from './images/categoryimages/entreecategorydesktop.svg';
 import entreeCategoryImageDesktopGold from './images/categoryimages/entreecategorydesktopgold.svg';
+import {changeCategoryView} from './view.js';
+import {setCurrentCategory, xfoodArray} from './menulogic.js'
+import {getCurrentCategory} from './menulogic.js';
 
 export function generateMenu() {
     
@@ -62,14 +52,12 @@ export function generateMenu() {
     infoBox.appendChild(infoBoxText);
     menuDiv.appendChild(infoBox);
     
-
     //Filter Navigation Element followed by filter creation based on object array
     let filterNav = document.createElement('nav');
     let filterNavInnerDiv = document.createElement('div');
     filterNav.className = 'filternav';
     filterNavInnerDiv.className = 'filternavinnerdiv';
 
-    
     let filters = ['Vego', 'Dairy-Free', 'Treenut', 'Vegan', 'Fish',
      'Gluten-Free', 'Peanut', 'Soy', 'Shellfish', 'Egg'];
 
@@ -95,34 +83,12 @@ export function generateMenu() {
     //Append everything to the menu div
     filterNav.appendChild(filterNavInnerDiv);
     menuDiv.appendChild(filterNav);
-    
 
     //generate food categories
-    let optionCarousel = document.createElement('nav');
-    let foodCategories = document.createElement('ul');
-    optionCarousel.className = 'optionscarousel';
+    let foodCategories = document.createElement('nav');
     foodCategories.className = 'foodcategories';
 
-    //Create Food Groups for Menu
-    function createFoodGroup(name, src, color) {
-        return {
-            name,
-            src,
-            color
-        }
-    }
-
-    let entrees = createFoodGroup('Entrees', entreesIcon, entreesIconColor);
-    let seafood = createFoodGroup('Seafood', seafoodIcon, seafoodIconColor);
-    let mains = createFoodGroup('Mains', mainsIcon, mainsIconColor);
-    let salads = createFoodGroup('Salads', saladsIcon, saladsIconColor);
-    let desserts = createFoodGroup('Desserts', dessertsIcon, dessertsIconColor);
-
-    //Create Array of different Food Groups
-    let foodArray = [entrees, seafood, mains, salads, desserts];
-    for (let i = 0; i < foodArray.length; i ++) {
-
-        // let foodDiv = document.createElement('div');
+    for (let i = 0; i < xfoodArray.length; i ++) {
 
         let foodOptionAnchor = document.createElement('a');
             foodOptionAnchor.className = 'foodoptionanchor';
@@ -130,61 +96,50 @@ export function generateMenu() {
 
         let foodOption = document.createElement('li');
             foodOption.className = 'foodoption';
-            foodOption.id = foodArray[i].name + 'option';
+            foodOption.id = xfoodArray[i].name + 'option';
 
         let foodOptionImage = document.createElement('img');
             foodOptionImage.className = 'foodoptionimage';
-            foodOptionImage.id = foodArray[i].name + 'menuicon';
-            foodOptionImage.src = foodArray[i].src;
+            foodOptionImage.id = xfoodArray[i].name + 'menuicon';
+            foodOptionImage.src = xfoodArray[i].normalImage;
+            xfoodArray[i].imageElement = foodOptionImage;
 
         let foodOptionTitle = document.createElement('h3');
-            foodOptionTitle.innerHTML = foodArray[i].name;
-            foodOptionTitle.id = foodArray[i].name + 'title';
+            foodOptionTitle.innerHTML = xfoodArray[i].name;
+            foodOptionTitle.id = xfoodArray[i].name + 'title';
+            xfoodArray[i].titleElement = foodOptionTitle;
 
-        // foodOption.appendChild(foodOptionImage);
-        // foodOption.appendChild(foodOptionTitle);
         foodOption.append(foodOptionImage, foodOptionTitle);
         foodOptionAnchor.appendChild(foodOption);
         foodCategories.appendChild(foodOptionAnchor);
-        // foodDiv.appendChild(foodOptionAnchor);
 
         foodOption.addEventListener('mouseover', () => {
-            let entree = document.getElementById('Entreesmenuicon');
-            let entreeTitle = document.getElementById('Entreestitle');
-            let seafood = document.getElementById('Seafoodmenuicon');
-            let seafoodTitle = document.getElementById('Seafoodtitle');
-            let mains = document.getElementById('Mainsmenuicon');
-            let mainsTitle = document.getElementById('Mainstitle');
-            let salads = document.getElementById('Saladsmenuicon');
-            let saladsTitle = document.getElementById('Saladstitle');
-            let desserts = document.getElementById('Dessertsmenuicon');
-            let dessertTitle = document.getElementById('Dessertstitle');
             
             switch (foodOption.id) {
-                case 'Entreesoption':  
-                    entree.src = entreesIconColor;
-                    entreeTitle.style.textDecoration = 'underline';
-                    entreeTitle.style.textDecorationColor = 'var(--clr-accent-1)';
+                case 'Entreesoption':
+                    xfoodArray[0].imageElement.src = xfoodArray[0].colorImage;
+                    xfoodArray[0].titleElement.style.textDecoration = 'underline';
+                    xfoodArray[0].titleElement.style.textDecorationColor = 'var(--clr-accent-1)';
                     break;
                 case 'Seafoodoption':  
-                    seafood.src = seafoodIconColor;
-                    seafoodTitle.style.textDecoration = 'underline';
-                    seafoodTitle.style.textDecorationColor = 'var(--clr-accent-1)';
+                    xfoodArray[1].imageElement.src = xfoodArray[1].colorImage;
+                    xfoodArray[1].titleElement.style.textDecoration = 'underline';
+                    xfoodArray[1].titleElement.style.textDecorationColor = 'var(--clr-accent-1)';
                     break;
                 case 'Mainsoption':  
-                    mains.src = mainsIconColor;
-                    mainsTitle.style.textDecoration = 'underline';
-                    mainsTitle.style.textDecorationColor = 'var(--clr-accent-1)';
+                    xfoodArray[2].imageElement.src = xfoodArray[2].colorImage;
+                    xfoodArray[2].titleElement.style.textDecoration = 'underline';
+                    xfoodArray[2].titleElement.style.textDecorationColor = 'var(--clr-accent-1)';
                     break;
                 case 'Saladsoption':  
-                    salads.src = saladsIconColor;
-                    saladsTitle.style.textDecoration = 'underline';
-                    saladsTitle.style.textDecorationColor = 'var(--clr-accent-1)';
+                    xfoodArray[3].imageElement.src = xfoodArray[3].colorImage;
+                    xfoodArray[3].titleElement.style.textDecoration = 'underline';
+                    xfoodArray[3].titleElement.style.textDecorationColor = 'var(--clr-accent-1)';
                     break;
                 case 'Dessertsoption':  
-                    desserts.src = dessertsIconColor;
-                    dessertTitle.style.textDecoration = 'underline';
-                    dessertTitle.style.textDecorationColor = 'var(--clr-accent-1)';
+                    xfoodArray[4].imageElement.src = xfoodArray[4].colorImage;
+                    xfoodArray[4].titleElement.style.textDecoration = 'underline';
+                    xfoodArray[4].titleElement.style.textDecorationColor = 'var(--clr-accent-1)';
                     break;
                 default:
                     break;
@@ -192,48 +147,90 @@ export function generateMenu() {
         });
 
         foodOption.addEventListener('mouseout', () => {
-            let entree = document.getElementById('Entreesmenuicon');
-            let entreeTitle = document.getElementById('Entreestitle');
-            let seafood = document.getElementById('Seafoodmenuicon');
-            let seafoodTitle = document.getElementById('Seafoodtitle');
-            let mains = document.getElementById('Mainsmenuicon');
-            let mainsTitle = document.getElementById('Mainstitle');
-            let salads = document.getElementById('Saladsmenuicon');
-            let saladsTitle = document.getElementById('Saladstitle');
-            let desserts = document.getElementById('Dessertsmenuicon');
-            let dessertsTitle = document.getElementById('Dessertstitle');
-
+            let isCurrentCategory =  getCurrentCategory();
             switch (foodOption.id) {
-                case 'Entreesoption':  
-                    entree.src = entreesIcon;
-                    entreeTitle.style.textDecoration = 'none';
-                    break;
+                case 'Entreesoption': 
+                    if (isCurrentCategory === 'Entrees') {
+                        break;
+                    } else {
+                        xfoodArray[0].imageElement.src = xfoodArray[0].normalImage;
+                        xfoodArray[0].titleElement.style.textDecoration = 'none';
+                        break;
+                    }
                 case 'Seafoodoption':  
-                    seafood.src = seafoodIcon;
-                    seafoodTitle.style.textDecoration = 'none'
+                    if (isCurrentCategory === 'Seafood') {
+                        break;
+                    } else {
+                        xfoodArray[1].imageElement.src = xfoodArray[1].normalImage;
+                        xfoodArray[1].titleElement.style.textDecoration = 'none';
+                        break;
+                    }
                     break;
-                case 'Mainsoption':  
-                    mains.src = mainsIcon;
-                    mainsTitle.style.textDecoration = 'none';
+                case 'Mainsoption':
+                    if (isCurrentCategory === 'Mains') {
+                        break;
+                    } else {
+                        xfoodArray[2].imageElement.src = xfoodArray[2].normalImage;
+                        xfoodArray[2].titleElement.style.textDecoration = 'none';
+                        break;
+                    }  
                     break;
                 case 'Saladsoption':
-                    salads.src = saladsIcon;
-                    saladsTitle.style.textDecoration = 'none'
+                    if (isCurrentCategory === 'Salads') {
+                        break;
+                    }
+                    else {
+                        xfoodArray[3].imageElement.src = xfoodArray[3].normalImage;
+                        xfoodArray[3].titleElement.style.textDecoration = 'none';
+                        break;
+                    }  
                     break;
-                case 'Dessertsoption':  
-                    desserts.src = dessertsIcon;
-                    dessertsTitle.style.textDecoration = 'none';
+                case 'Dessertsoption': 
+                    if (isCurrentCategory === 'Desserts') {
+                        break;
+                    }
+                    else {
+                        xfoodArray[4].imageElement.src = xfoodArray[4].normalImage;
+                        xfoodArray[4].titleElement.style.textDecoration = 'none';
+                        break;
+                    }  
+                default:
+                    break;
+            }
+        });
+
+        foodOption.addEventListener('click', () => {
+            switch (foodOption.id) {
+                case 'Entreesoption': 
+                    setCurrentCategory(xfoodArray[0]);
+                    changeCategoryView(xfoodArray);
+                    break;
+                case 'Seafoodoption': 
+                    setCurrentCategory(xfoodArray[1]);
+                    changeCategoryView(xfoodArray);
+                    break;
+                case 'Mainsoption':  
+                    setCurrentCategory(xfoodArray[2]);
+                    changeCategoryView(xfoodArray);
+                    break;
+                case 'Saladsoption':
+                    setCurrentCategory(xfoodArray[3]);
+                    changeCategoryView(xfoodArray);
+                    break;
+                case 'Dessertsoption': 
+                    setCurrentCategory(xfoodArray[4]);
+                    changeCategoryView(xfoodArray);
                     break;
                 default:
                     break;
             }
-
         });
-
     }
-    optionCarousel.appendChild(foodCategories);
-    menuDiv.appendChild(optionCarousel);
+
+    menuDiv.appendChild(foodCategories);
     menuPageDiv.appendChild(menuDiv);
+
+
 
     //Menu Table
     //Image? - Title/Descriptiong - Price
@@ -253,4 +250,5 @@ export function generateMenu() {
             tableRow.appendChild(tableData);
         }
     }
+    changeCategoryView();
 }

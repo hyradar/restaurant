@@ -4,12 +4,12 @@ import seafraLogoWhite from './images/seafraLogoWhite.svg';
 import dropDownIcon from './images/dropdownicon.svg';
 import {removeDropDown} from './script.js'
 import { generateMenu } from './menupage';
-import { clearContentDiv } from './homepage';
+import { clearContentDiv } from './view.js';
 import { generateHomePage } from './homepage';
 
 import entreeCategoryImageMobile from './images/categoryimages/entreecategorymobile.svg';
 import entreeCategoryImageDesktop from './images/categoryimages/entreecategorydesktop.svg';
-
+//
 
 export function generateTopBar() {
     const body = document.querySelector('.bg');

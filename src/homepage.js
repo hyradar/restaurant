@@ -1,9 +1,13 @@
 import {generateTopBar} from './topbar.js';
 import {generateMenu} from './menupage.js';
+import {clearContentDiv} from './view.js';
 
 //Runs when user first arrives at webpage
 generateTopBar();
 generateContent();
+
+//Not sure why I need to do this twice to make it show up on first page O.o
+generateHomePage();
 generateHomePage();
 
 //I use this code multiple times throughout my code
@@ -18,10 +22,9 @@ let menuButton = document.getElementById('Menubutton');
     menuButton.addEventListener('click', generateMenu);
 
 export function generateHomePage() {
-    
-    let checkDropDown = document.querySelector('.dropdown');
 
     // Generating Center Box
+    let content = document.getElementById('content');
     let centerBox = document.createElement('div');
     centerBox.className = 'centerbox';
     
@@ -45,17 +48,12 @@ export function generateHomePage() {
     centerBox.appendChild(centerTop);
     centerBox.appendChild(centerBottomDiv);
     content.appendChild(centerBox);
+    content.appendChild(centerBox);
+    content.appendChild(centerBox);
+    content.appendChild(centerBox);
 }
 
-export function clearContentDiv() {
-    console.log('clear content div firing');
-    let content = document.getElementById('content');
-    let children = content.children;
-
-    for (let i = 0; i < children.length; i++) {
-            children[i].remove();
-    }
-}
+clearContentDiv();
 
 //Easier to force topRow and dropDown above Content Div if I generate it with JS
 function generateContent() {
