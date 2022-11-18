@@ -410,6 +410,10 @@ svg {
   border-bottom: 1px solid black;
 }
 
+.menurow span {
+  text-align: center;
+}
+
 .itemnameprice {
   display: flex;
   justify-content: center;

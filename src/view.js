@@ -13,7 +13,6 @@ export function changeCategoryView() {
             item.titleElement.style.textDecoration = 'none';
         }
     });
-
 }
 
 export function clearContentDiv() {

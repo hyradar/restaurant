@@ -5,6 +5,10 @@ import {setCurrentCategory, xfoodArray} from './menulogic.js'
 import {getCurrentCategory} from './menulogic.js';
 
 import {seafoodMenu} from './menu.js';
+import {entreesMenu} from './menu.js';
+import {mainsMenu} from './menu.js';
+import {saladsMenu} from './menu.js';
+import {dessertsMenu} from './menu.js';
 
 
 export function generateMenu() {
@@ -93,6 +97,7 @@ export function generateMenu() {
 
         let foodOptionAnchor = document.createElement('button');
             foodOptionAnchor.className = 'foodoptionbutton';
+            //fdsa
 
         let foodOption = document.createElement('li');
             foodOption.className = 'foodoption';
@@ -204,31 +209,31 @@ export function generateMenu() {
                 case 'Entreesoption': 
                     setCurrentCategory(xfoodArray[0]);
                     clearMenuItems();
-                    generateMenuItems();
+                    generateMenuItems(entreesMenu);
                     changeCategoryView(xfoodArray);
                     break;
                 case 'Seafoodoption': 
                     setCurrentCategory(xfoodArray[1]);
                     clearMenuItems();
-                    generateMenuItems();
+                    generateMenuItems(seafoodMenu);
                     changeCategoryView(xfoodArray);
                     break;
                 case 'Mainsoption':  
                     setCurrentCategory(xfoodArray[2]);
                     clearMenuItems();
-                    generateMenuItems();
+                    generateMenuItems(mainsMenu);
                     changeCategoryView(xfoodArray);
                     break;
                 case 'Saladsoption':
                     setCurrentCategory(xfoodArray[3]);
                     clearMenuItems();
-                    generateMenuItems();
+                    generateMenuItems(saladsMenu);
                     changeCategoryView(xfoodArray);
                     break;
                 case 'Dessertsoption': 
                     setCurrentCategory(xfoodArray[4]);
                     clearMenuItems();
-                    generateMenuItems();
+                    generateMenuItems(dessertsMenu);
                     changeCategoryView(xfoodArray);
                     break;
                 default:
@@ -249,33 +254,32 @@ export function generateMenu() {
     menuDiv.appendChild(categoryDiv)
     menuDiv.appendChild(menuLayout);
 
-function generateMenuItems() {
-    let currentCategory = getCurrentCategory();
-    if (currentCategory === 'Seafood') {
-        for (let i = 0; i < seafoodMenu.length; i++) {
-            let menuLayout = document.querySelector('.menulayout');
-            let row = document.createElement('div');
-            row.className = 'menurow';
-    
-            let itemNamePrice = document.createElement('span');
-            let itemName = document.createElement('span');
-            let itemPrice = document.createElement('span');
-            let itemDesc = document.createElement('span');
-    
-            itemNamePrice.className = 'itemnameprice';
-            itemDesc.className = 'itemdesc';
-    
-            itemName.innerText = seafoodMenu[i].name;
-            itemDesc.innerText = seafoodMenu[i].description;
-            itemPrice.innerText = seafoodMenu[i].price;
-    
-            itemNamePrice.appendChild(itemName);
-            itemNamePrice.appendChild(itemPrice);
-            row.appendChild(itemNamePrice);
-            row.appendChild(itemDesc);
-            menuLayout.appendChild(row);
-        } 
-    }
+function generateMenuItems(menu) {
+    // let currentCategory = getCurrentCategory();
+    // console.log(currentCategory);
+    for (let i = 0; i < menu.length; i++) {
+        let menuLayout = document.querySelector('.menulayout');
+        let row = document.createElement('div');
+        row.className = 'menurow';
+
+        let itemNamePrice = document.createElement('span');
+        let itemName = document.createElement('span');
+        let itemPrice = document.createElement('span');
+        let itemDesc = document.createElement('span');
+
+        itemNamePrice.className = 'itemnameprice';
+        itemDesc.className = 'itemdesc';
+
+        itemName.innerText = menu[i].name;
+        itemDesc.innerText = menu[i].description;
+        itemPrice.innerText = menu[i].price;
+
+        itemNamePrice.appendChild(itemName);
+        itemNamePrice.appendChild(itemPrice);
+        row.appendChild(itemNamePrice);
+        row.appendChild(itemDesc);
+        menuLayout.appendChild(row);
+    } 
 }
 
 //Deletes then recreates MenuLayout Div
@@ -292,5 +296,9 @@ function clearMenuItems() {
         menuDiv.appendChild(menuLayout);
     }
 }
-    changeCategoryView();
+
+    //Sets Entrees as default category
+    setCurrentCategory(xfoodArray[0]);
+    generateMenuItems(entreesMenu);
+    changeCategoryView(xfoodArray);
 }
