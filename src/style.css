@@ -321,37 +321,49 @@ svg {
   padding: .5rem;
   display: grid;
   justify-content: center;
-  /* grid-template-columns: repeat(5, clamp(7vw, 15vw, 7rem)); */
-  grid-template-columns: repeat(5, 4.8rem);
+  grid-template-columns: repeat(5, clamp(2.5rem, 10vw, 7rem));
+  /* grid-template-columns: repeat(5, 2rem); */
   gap: 1rem;
   border-top: 1px solid black;
 }
 
 .foodoption {
   display: grid;
-  grid-template-rows: 60% 40%;
+  grid-template-rows: 70% 30%;
   justify-self: center;
   justify-content: center;
+  align-items: center;
 }
 
 .foodoption h3 {
-  font-size: 1.3rem;
+  font-size: clamp(.5rem, .8rem, 3.5rem);
+  /* font-size: 1.3rem; */
   height: auto;
+  text-align: center;
 }
 
 .foodoptionimage {
-  width: 3rem;
+  width: 40px;
+  /* width: 3rem; */
   justify-self: center;
 }
 
-.foodoptionanchor {
+.foodoptionbutton {
   color: black;
   text-decoration: none;
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
 }
 
 .categorydiv {
   height: 3rem;
   border-top: 1px solid black;
+  border-bottom: 1px solid black;
   background-color: white;
   
   display: flex;
@@ -384,18 +396,39 @@ svg {
   margin-top: 1rem;
 }
 
-.menutable {
-  width: 100%;
-  background-color: white;
+.menulayout {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.menurow {
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+  padding: .3rem;
+  border-bottom: 1px solid black;
+}
+
+.itemnameprice {
+  display: flex;
+  justify-content: center;
+  gap: .5rem;
+  font-weight: 550;
+  font-size: 1.1rem;
+}
+
+.itemdesc {
+  text-align: center;
 }
 
 table {
   border: 1px solid black;
 }
 
-td,
 tr {
   border: 1px solid grey;
+  height: 10vh;
 }
 
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */

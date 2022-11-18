@@ -21,6 +21,7 @@ import dessertsIconColor from './images/menuicons/cupcakecolor.svg';
     }
 }
 
+
 let entrees = foodGroup('Entrees', entreesIcon, entreesIconColor, document.getElementById('Entreesmenuicon'), document.getElementById('Entreestitle'), true);
 let seafood = foodGroup('Seafood', seafoodIcon, seafoodIconColor, document.getElementById('Seafoodmenuicon'), document.getElementById('Seafoodtitle'), false);
 let mains = foodGroup('Mains', mainsIcon, mainsIconColor, document.getElementById('Mainsmenuicon'), document.getElementById('Mainstitle'), false);
