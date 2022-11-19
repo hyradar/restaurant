@@ -37,7 +37,6 @@ export function removeDropDown() {
             let currentDropDown = document.querySelector('.dropdown');
             if (currentDropDown) {
                 currentDropDown.classList.toggle('active');
-                console.log('firing removeDropDown function');
             }
         }   
     });

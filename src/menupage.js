@@ -1,15 +1,14 @@
 import entreeCategoryImageMobile from './images/categoryimages/entreecategorymobile.svg';
 import entreeCategoryImageDesktopGold from './images/categoryimages/entreecategorydesktopgold.svg';
 import {changeCategoryView} from './view.js';
-import {setCurrentCategory, xfoodArray} from './menulogic.js'
-import {getCurrentCategory} from './menulogic.js';
+import {setCurrentCategory, getCurrentCategory, xfoodArray, updateMenuWithFilters} from './menu.js'
 
 import {seafoodMenu} from './menu.js';
 import {entreesMenu} from './menu.js';
 import {mainsMenu} from './menu.js';
 import {saladsMenu} from './menu.js';
 import {dessertsMenu} from './menu.js';
-
+import {filterArray} from './menu.js';
 
 export function generateMenu() {
     
@@ -74,8 +73,34 @@ export function generateMenu() {
         filterDiv.className = 'filterdiv';
 
         filterInput.className = 'filterinput';
+        filterInput.id = filterInput.className + filters[i];
         filterInput.type = 'checkbox';
         filterInput.name = filters[i];
+        filterInput.addEventListener('click', () => {
+            filterArray.setFilter(filterInput.id);
+            updateMenuWithFilters(entreesMenu, filterArray);
+            updateMenuWithFilters(seafoodMenu, filterArray);
+            updateMenuWithFilters(mainsMenu, filterArray);
+            updateMenuWithFilters(saladsMenu, filterArray);
+            updateMenuWithFilters(dessertsMenu, filterArray);
+            clearMenuItems();
+            let category =  getCurrentCategory();
+            switch (category) {
+                case 'Entrees': generateMenuItems(entreesMenu);
+                    break;
+                case 'Seafood': generateMenuItems(seafoodMenu);
+                    break;
+                case 'Mains':  generateMenuItems(mainsMenu);
+                    break;
+                case 'Salads': generateMenuItems(saladsMenu);
+                    break;
+                case 'Desserts': generateMenuItems(dessertsMenu);
+                    break;
+                default:
+                    break;
+            }
+            
+        });
 
         filterLabel.for = filters[i];
         filterLabel.innerText = filters[i];
@@ -255,30 +280,32 @@ export function generateMenu() {
     menuDiv.appendChild(menuLayout);
 
 function generateMenuItems(menu) {
-    // let currentCategory = getCurrentCategory();
-    // console.log(currentCategory);
+
     for (let i = 0; i < menu.length; i++) {
-        let menuLayout = document.querySelector('.menulayout');
-        let row = document.createElement('div');
-        row.className = 'menurow';
 
-        let itemNamePrice = document.createElement('span');
-        let itemName = document.createElement('span');
-        let itemPrice = document.createElement('span');
-        let itemDesc = document.createElement('span');
-
-        itemNamePrice.className = 'itemnameprice';
-        itemDesc.className = 'itemdesc';
-
-        itemName.innerText = menu[i].name;
-        itemDesc.innerText = menu[i].description;
-        itemPrice.innerText = menu[i].price;
-
-        itemNamePrice.appendChild(itemName);
-        itemNamePrice.appendChild(itemPrice);
-        row.appendChild(itemNamePrice);
-        row.appendChild(itemDesc);
-        menuLayout.appendChild(row);
+        if (menu[i].canShow === true) {
+            let menuLayout = document.querySelector('.menulayout');
+            let row = document.createElement('div');
+            row.className = 'menurow';
+    
+            let itemNamePrice = document.createElement('span');
+            let itemName = document.createElement('span');
+            let itemPrice = document.createElement('span');
+            let itemDesc = document.createElement('span');
+    
+            itemNamePrice.className = 'itemnameprice';
+            itemDesc.className = 'itemdesc';
+    
+            itemName.innerText = menu[i].name;
+            itemDesc.innerText = menu[i].description;
+            itemPrice.innerText = menu[i].price;
+    
+            itemNamePrice.appendChild(itemName);
+            itemNamePrice.appendChild(itemPrice);
+            row.appendChild(itemNamePrice);
+            row.appendChild(itemDesc);
+            menuLayout.appendChild(row);
+        }    
     } 
 }
 
@@ -296,8 +323,6 @@ function clearMenuItems() {
         menuDiv.appendChild(menuLayout);
     }
 }
-
-    //Sets Entrees as default category
     setCurrentCategory(xfoodArray[0]);
     generateMenuItems(entreesMenu);
     changeCategoryView(xfoodArray);

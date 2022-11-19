@@ -23,7 +23,7 @@ export function generateTopBar() {
     rowLogo.alt = 'Seafra Logo';
     rowLogo.className = 'logo';
     
-    let menuArray = ['Home', 'Menu', 'Events', 'Contact', 'Dev Notes'];
+    let menuArray = ['Home', 'Menu', 'Contact', 'Dev Notes'];
     
     //Starts with Mobile HTML
     if (window.innerWidth < 700) {

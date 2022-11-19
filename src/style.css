@@ -373,10 +373,11 @@ svg {
 
 .menudiv {
   margin-top: 2rem;
+  margin-bottom: 10rem;
   background-color: white;
   border: 3px solid var(--clr-accent-1);
   border-radius: 5px;
-  width: 90%;
+  width: 70%;
 }
 
 
@@ -460,6 +461,10 @@ tr {
     justify-self: center;
     align-self: center;
   }
+
+  .menudiv {
+    margin-bottom: 7rem;
+  }
 }
 
 @media (min-width: 700px) {
@@ -467,10 +472,6 @@ tr {
   .filternavinnerdiv {
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(2, 1fr);
-  }
-
-  .menudiv {
-    width: 70%;
   }
 
 }

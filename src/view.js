@@ -1,4 +1,4 @@
-import { xfoodArray } from './menulogic';
+import { xfoodArray } from './menu.js';
 
 //Technically Menu View
 export function changeCategoryView() {
