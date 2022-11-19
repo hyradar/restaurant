@@ -3,6 +3,13 @@ import {generateMenu} from './menupage.js';
 import {clearContentDiv} from './view.js';
 
 //Runs when user first arrives at webpage
+
+//If JS warning exists, delete
+let javascriptWarning = document.getElementById('javascriptwarning');
+if (javascriptWarning) {
+    javascriptWarning.remove();
+}
+
 generateTopBar();
 generateContent();
 
