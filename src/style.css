@@ -266,14 +266,12 @@ svg {
 }
 
 .infobox {
-  border: 1px solid green;
   display: flex;
   justify-content: center;
   align-items: center;
 
   text-align: center;
   font-size: clamp(.8rem, 1vw + .8rem, 1.5rem);
-  
 }
 
 .infobox p{
@@ -284,6 +282,8 @@ svg {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 .filternavinnerdiv {
@@ -309,7 +309,7 @@ svg {
 }
 
 .filterinputlabel {
-  font-size: clamp(.5rem, 1vw + .7rem, 1rem);
+  font-size: clamp(.5rem, 1vw + .4rem, 1rem);
 }
 
 
@@ -318,13 +318,15 @@ svg {
 }
 
 .foodcategories {
-  padding: .5rem;
+  padding: .5em;
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(5, clamp(2.5rem, 10vw, 7rem));
+  /* grid-template-columns: repeat(5, clamp(2.5rem, 3vw + 3rem, 7rem)); */
+  grid-template-columns: repeat(5, clamp(1.5rem, 2vw + 3rem, 7rem));
   /* grid-template-columns: repeat(5, 2rem); */
-  gap: 1rem;
-  border-top: 1px solid black;
+  gap: clamp(2rem, 1vw + .5rem, 4.5rem);
+  margin-left: .5rem;
+  margin-right: .5rem;
 }
 
 .foodoption {
@@ -336,15 +338,13 @@ svg {
 }
 
 .foodoption h3 {
-  font-size: clamp(.5rem, .8rem, 3.5rem);
-  /* font-size: 1.3rem; */
+  font-size: clamp(1rem, 1vw + .5rem, 1.5rem);
   height: auto;
   text-align: center;
 }
 
 .foodoptionimage {
-  width: 40px;
-  /* width: 3rem; */
+  width: clamp(1rem, 1vw + 2rem, 3rem);
   justify-self: center;
 }
 
@@ -361,7 +361,7 @@ svg {
 }
 
 .categorydiv {
-  height: 3rem;
+  height: clamp(2rem, 3vw + 2rem, 5rem);
   border-top: 1px solid black;
   border-bottom: 1px solid black;
   background-color: white;
@@ -373,11 +373,11 @@ svg {
 
 .menudiv {
   margin-top: 2rem;
-  margin-bottom: 10rem;
+  margin-bottom: 5rem;
   background-color: white;
   border: 3px solid var(--clr-accent-1);
   border-radius: 5px;
-  width: 70%;
+  width: 80%;
 }
 
 
@@ -464,6 +464,16 @@ tr {
 
   .menudiv {
     margin-bottom: 7rem;
+    width: 95%;
+  }
+
+  .foodcategories {
+    gap: clamp(.1rem, .8vw, 10.5rem);
+    
+  }
+
+  .categorydiv {
+    height: clamp(2rem, 3vw + 3rem, 7rem);
   }
 }
 

@@ -9,8 +9,22 @@ import saladsIconColor from './images/menuicons/saladcolor.svg';
 import dessertsIcon from './images/menuicons/cupcake.png';
 import dessertsIconColor from './images/menuicons/cupcakecolor.svg';
 
+//Mobile Banners
+import entreeMobileBanner from './images/categoryimages/entreecategorymobile.svg';
+import seafoodMobileBanner from './images/categoryimages/seafoodcategorymobile.svg';
+import mainsMobileBanner from './images/categoryimages/mainscategorymobile.svg';
+import saladsMobileBanner from './images/categoryimages/saladscategorymobile.svg';
+import dessertsMobileBanner from './images/categoryimages/dessertscategorymobile.svg';
+
+//Desktop Banners
+import entreeDesktopBanner from './images/categoryimages/entreecategorydesktop.svg';
+import seafoodDesktopBanner from './images/categoryimages/seafoodcategorydesktop.svg';
+import mainsDesktopBanner from './images/categoryimages/mainscategorydesktop.svg';
+import saladsDesktopBanner from './images/categoryimages/saladscategorydesktop.svg';
+import dessertsDesktopBanner from './images/categoryimages/dessertscategorydesktop.svg';
+
 //Create Food Groups for Menu
-function foodGroup(name, normalImage, colorImage, imageElement, titleElement, isCurrentCategory) {
+function foodGroup(name, normalImage, colorImage, mobileBanner, desktopBanner, imageElement, titleElement, isCurrentCategory) {
     return {
         name,
         normalImage,
@@ -18,8 +32,19 @@ function foodGroup(name, normalImage, colorImage, imageElement, titleElement, is
         imageElement,
         titleElement,
         isCurrentCategory,
+        mobileBanner,
+        desktopBanner,
     }
 }
+
+export let entrees = foodGroup('Entrees', entreesIcon, entreesIconColor, entreeMobileBanner, entreeDesktopBanner, document.getElementById('Entreesmenuicon'), document.getElementById('Entreestitle'), true);
+let seafood = foodGroup('Seafood', seafoodIcon, seafoodIconColor, seafoodMobileBanner, seafoodDesktopBanner, document.getElementById('Seafoodmenuicon'), document.getElementById('Seafoodtitle'), false);
+let mains = foodGroup('Mains', mainsIcon, mainsIconColor, mainsMobileBanner, mainsDesktopBanner, document.getElementById('Mainsmenuicon'), document.getElementById('Mainstitle'), false);
+let salads = foodGroup('Salads', saladsIcon, saladsIconColor, saladsMobileBanner, saladsDesktopBanner, document.getElementById('Saladsmenuicon'), document.getElementById('Saladstitle'), false);
+let desserts = foodGroup('Desserts', dessertsIcon, dessertsIconColor, dessertsMobileBanner, dessertsDesktopBanner, document.getElementById('Dessertsmenuicon'), document.getElementById('Dessertstitle'), false);
+
+export const xfoodArray = [entrees, seafood, mains, salads, desserts];
+
 
 export function getCurrentCategory() {
     for (let i = 0; i < xfoodArray.length; i++) {
@@ -61,13 +86,6 @@ function foodItem(name, description, foodGroup, price, canShow, isVegetarian, is
     }
 }
 
-let entrees = foodGroup('Entrees', entreesIcon, entreesIconColor, document.getElementById('Entreesmenuicon'), document.getElementById('Entreestitle'), true);
-let seafood = foodGroup('Seafood', seafoodIcon, seafoodIconColor, document.getElementById('Seafoodmenuicon'), document.getElementById('Seafoodtitle'), false);
-let mains = foodGroup('Mains', mainsIcon, mainsIconColor, document.getElementById('Mainsmenuicon'), document.getElementById('Mainstitle'), false);
-let salads = foodGroup('Salads', saladsIcon, saladsIconColor, document.getElementById('Saladsmenuicon'), document.getElementById('Saladstitle'), false);
-let desserts = foodGroup('Desserts', dessertsIcon, dessertsIconColor, document.getElementById('Dessertsmenuicon'), document.getElementById('Dessertstitle'), false);
-
-export const xfoodArray = [entrees, seafood, mains, salads, desserts];
 
 export function updateMenuWithFilters(menu, filterArray) {
     menu.forEach((item) => {

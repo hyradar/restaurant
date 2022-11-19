@@ -1,14 +1,5 @@
-import entreeCategoryImageMobile from './images/categoryimages/entreecategorymobile.svg';
-import entreeCategoryImageDesktopGold from './images/categoryimages/entreecategorydesktopgold.svg';
-import {changeCategoryView} from './view.js';
-import {setCurrentCategory, getCurrentCategory, xfoodArray, updateMenuWithFilters} from './menu.js'
-
-import {seafoodMenu} from './menu.js';
-import {entreesMenu} from './menu.js';
-import {mainsMenu} from './menu.js';
-import {saladsMenu} from './menu.js';
-import {dessertsMenu} from './menu.js';
-import {filterArray} from './menu.js';
+import {changeCategoryView, changeBanner} from './view.js';
+import {entreesMenu, seafoodMenu, mainsMenu, saladsMenu, dessertsMenu, filterArray, entrees, setCurrentCategory, getCurrentCategory, xfoodArray, updateMenuWithFilters} from './menu.js';
 
 export function generateMenu() {
     
@@ -40,10 +31,10 @@ export function generateMenu() {
     categoryTitleImage.className = 'categorytitleimage';
     
     if (window.innerWidth >= 700) {
-        categoryTitleImage.src = entreeCategoryImageDesktopGold;
+        categoryTitleImage.src = entrees.desktopBanner;
     }
     else {
-        categoryTitleImage.src = entreeCategoryImageMobile;
+        categoryTitleImage.src = entrees.mobileBanner;
     }
     
     //Information box
@@ -150,6 +141,7 @@ export function generateMenu() {
                     xfoodArray[0].imageElement.src = xfoodArray[0].colorImage;
                     xfoodArray[0].titleElement.style.textDecoration = 'underline';
                     xfoodArray[0].titleElement.style.textDecorationColor = 'var(--clr-accent-1)';
+
                     break;
                 case 'Seafoodoption':  
                     xfoodArray[1].imageElement.src = xfoodArray[1].colorImage;
@@ -235,31 +227,36 @@ export function generateMenu() {
                     setCurrentCategory(xfoodArray[0]);
                     clearMenuItems();
                     generateMenuItems(entreesMenu);
-                    changeCategoryView(xfoodArray);
+                    changeCategoryView();
+                    changeBanner();
                     break;
                 case 'Seafoodoption': 
                     setCurrentCategory(xfoodArray[1]);
                     clearMenuItems();
                     generateMenuItems(seafoodMenu);
-                    changeCategoryView(xfoodArray);
+                    changeCategoryView();
+                    changeBanner();
                     break;
                 case 'Mainsoption':  
                     setCurrentCategory(xfoodArray[2]);
                     clearMenuItems();
                     generateMenuItems(mainsMenu);
-                    changeCategoryView(xfoodArray);
+                    changeCategoryView();
+                    changeBanner();
                     break;
                 case 'Saladsoption':
                     setCurrentCategory(xfoodArray[3]);
                     clearMenuItems();
                     generateMenuItems(saladsMenu);
-                    changeCategoryView(xfoodArray);
+                    changeCategoryView();
+                    changeBanner();
                     break;
                 case 'Dessertsoption': 
                     setCurrentCategory(xfoodArray[4]);
                     clearMenuItems();
                     generateMenuItems(dessertsMenu);
-                    changeCategoryView(xfoodArray);
+                    changeCategoryView();
+                    changeBanner();
                     break;
                 default:
                     break;
@@ -327,3 +324,4 @@ function clearMenuItems() {
     generateMenuItems(entreesMenu);
     changeCategoryView(xfoodArray);
 }
+

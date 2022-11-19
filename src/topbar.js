@@ -4,12 +4,8 @@ import seafraLogoWhite from './images/seafraLogoWhite.svg';
 import dropDownIcon from './images/dropdownicon.svg';
 import {removeDropDown} from './script.js'
 import { generateMenu } from './menupage';
-import { clearContentDiv } from './view.js';
+import {changeBanner, clearContentDiv} from './view.js';
 import { generateHomePage } from './homepage';
-
-import entreeCategoryImageMobile from './images/categoryimages/entreecategorymobile.svg';
-import entreeCategoryImageDesktop from './images/categoryimages/entreecategorydesktop.svg';
-//
 
 export function generateTopBar() {
     const body = document.querySelector('.bg');
@@ -25,13 +21,11 @@ export function generateTopBar() {
     
     let menuArray = ['Home', 'Menu', 'Contact', 'Dev Notes'];
     
-    //Starts with Mobile HTML
+    // Starts with Mobile HTML
     if (window.innerWidth < 700) {
     
-        let categoryTitleImage = document.querySelector('.categorytitleimage');
-        if (categoryTitleImage) {
-            categoryTitleImage.src = entreeCategoryImageMobile;
-        }
+        changeBanner();
+
         //Set Logo Color
         rowLogo.src = seafraLogoBlack;
         
@@ -128,10 +122,8 @@ export function generateTopBar() {
         topRow.appendChild(menuBar);
         body.appendChild(topRow);
 
-        let categoryTitleImage = document.querySelector('.categorytitleimage');
-        if (categoryTitleImage) {
-            categoryTitleImage.src = entreeCategoryImageDesktop;
-        }
+        changeBanner();
+            
     }
 
 
@@ -185,10 +177,7 @@ export function generateTopBar() {
             menuButton.addEventListener('click', clearContentDiv);
             menuButton.addEventListener('click', generateMenu);
 
-            let categoryTitleImage = document.querySelector('.categorytitleimage');
-            if (categoryTitleImage) {
-                categoryTitleImage.src = entreeCategoryImageDesktop;
-            }
+            changeBanner();
         }
     }
 
@@ -271,10 +260,6 @@ export function generateTopBar() {
         menuButton.addEventListener('click', clearContentDiv);
         menuButton.addEventListener('click', generateMenu);
 
-        let categoryTitleImage = document.querySelector('.categorytitleimage');
-        if (categoryTitleImage) {
-            categoryTitleImage.src = entreeCategoryImageMobile;
-        }
-
+        changeBanner();
     }
 }

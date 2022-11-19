@@ -23,3 +23,20 @@ export function clearContentDiv() {
             children[i].remove();
     }
 }
+
+export function changeBanner() {
+    let banner = document.querySelector('.categorytitleimage');
+    xfoodArray.forEach((item) => {
+    
+        if (banner) {
+            if (item.isCurrentCategory) {
+                if (window.innerWidth >= 700) {
+                    banner.src = item.desktopBanner;
+                }
+                else {
+                    banner.src = item.mobileBanner;
+                }
+            }
+        }
+    });
+}
