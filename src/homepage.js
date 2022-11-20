@@ -1,4 +1,4 @@
-import {generateTopBar, clearContentDiv} from './view.js';
+import {siteStart, clearContentDiv, addButtonEventListeners} from './view.js';
 import {generateMenu} from './menupage.js';
 
 //Runs when user first arrives at webpage
@@ -9,27 +9,10 @@ if (javascriptWarning) {
     javascriptWarning.remove();
 }
 
-generateTopBar();
+siteStart();
 generateContent();
-
-//Not sure why I need to do this twice to make it show up on first page O.o
 generateHomePage();
-
-//I use this code multiple times throughout my code
-//Better to turn it into a module
-//and refactor is so that it is easy to create new pages
-let homeButton = document.getElementById('Homebutton');
-    if (homeButton) {
-        homeButton.addEventListener('click', clearContentDiv);
-        homeButton.addEventListener('click', generateHomePage);
-    }
-
-let menuButton = document.getElementById('Menubutton');
-    if (menuButton) {
-        menuButton.addEventListener('click', clearContentDiv);
-        menuButton.addEventListener('click', generateMenu);
-    }
-    
+addButtonEventListeners();
 
 export function generateHomePage() {
 

@@ -7,19 +7,8 @@ import {removeDropDown} from './dropdown.js'
 import { generateMenu } from './menupage';
 import { generateHomePage } from './homepage';
 
-export function generateTopBar() {
-    const body = document.querySelector('.bg');
+export function siteStart() {
     document.title = 'Seafra';
-    
-    //Generating Top Row
-    let topRow = document.createElement('div');
-    topRow.className = 'toprow';
-    let rowAnchor = document.createElement('a');
-    let rowLogo = document.createElement('img');
-    rowLogo.alt = 'Seafra Logo';
-    rowLogo.className = 'logo';
-    
-    let menuArray = ['Home', 'Menu', 'Contact', 'Dev Notes'];
     
     // Starts with Mobile HTML
     if (window.innerWidth < 700) {
@@ -33,8 +22,6 @@ export function generateTopBar() {
     const mediaQueryMin = window.matchMedia('(min-width: 700px)');
     mediaQueryMax.addListener(handleMediaQueryMax);
     mediaQueryMin.addListener(handleMediaQueryMin);
-
-    changeBanner(); 
 }
 
 function handleMediaQueryMin (e){
@@ -76,23 +63,14 @@ function handleMediaQueryMin (e){
         let rowLogo = document.querySelector('.logo');
         rowLogo.src = seafraLogoWhite;
         let rowAnchor = document.querySelector('.rowanchor');
+        rowAnchor.href = '#';
         rowAnchor.appendChild(rowLogo);
     
         topRow.appendChild(rowAnchor);
         topRow.appendChild(menuBar);
         body.insertBefore(topRow, content);
 
-        let homeButton = document.getElementById('Homebutton');
-        if (homeButton) {
-            homeButton.addEventListener('click', clearContentDiv);
-            homeButton.addEventListener('click', generateHomePage);
-        }
-            
-        let menuButton = document.getElementById('Menubutton');
-        if (menuButton) {
-            menuButton.addEventListener('click', clearContentDiv);
-            menuButton.addEventListener('click', generateMenu);
-        }   
+        addButtonEventListeners();
         changeBanner();       
     }
 }
@@ -100,7 +78,6 @@ function handleMediaQueryMin (e){
 function handleMediaQueryMax (e) {
     generateMobile();
 }
-
 
 //Technically Menu View
 export function changeCategoryView() {
@@ -129,7 +106,6 @@ export function clearContentDiv() {
 export function changeBanner() {
     let banner = document.querySelector('.categorytitleimage');
     xfoodArray.forEach((item) => {
-    
         if (banner) {
             if (item.isCurrentCategory) {
                 if (window.innerWidth >= 700) {
@@ -181,20 +157,23 @@ function generateDesktop() {
 
 }
 function generateMobile() {
-    console.log('generatemobilefiring');
-    let menuArray = ['Home', 'Menu', 'Contact', 'Dev Notes'];
+
     
     let findRow = document.querySelector('.toprow');
-    if (findRow) {}
-    findRow.remove();
+    if (findRow) {
+        findRow.remove();
+    }
         
+        let menuArray = ['Home', 'Menu', 'Contact', 'Dev Notes'];
         let topRow = document.createElement('div');
         topRow.className = 'toprow';
         let rowAnchor = document.createElement('a');
+        rowAnchor.href = '#';
         rowAnchor.className = 'rowanchor';
         let rowLogo = document.createElement('img');
         rowLogo.alt = 'Seafra Logo';
         rowLogo.className = 'logo';
+        rowLogo.src = seafraLogoBlack;
 
         let body = document.querySelector('.bg');
         let menuBar = document.querySelector('.menubar');
@@ -212,7 +191,7 @@ function generateMobile() {
             mobileMenuButton.remove();
         }
 
-        rowLogo.src = seafraLogoBlack;
+        
         
         //Menu Button
         mobileMenuButton = document.createElement('button');
@@ -267,18 +246,21 @@ function generateMobile() {
             dropDownMenu.append(dropDownItem);
         });
         
-        let homeButton = document.getElementById('Homebutton');
-        let menuButton = document.getElementById('Menubutton');
-        if (homeButton) {
-            homeButton.addEventListener('click', clearContentDiv);
-            homeButton.addEventListener('click', generateHomePage);
-        }
-        
-        if (menuButton) {
-            menuButton.addEventListener('click', clearContentDiv);
-            menuButton.addEventListener('click', generateMenu);
-        }
-
+        addButtonEventListeners();
         changeBanner();
+}
+
+export function addButtonEventListeners() {
+    let homeButton = document.getElementById('Homebutton');
+    let menuButton = document.getElementById('Menubutton');
+    if (homeButton) {
+        homeButton.addEventListener('click', clearContentDiv);
+        homeButton.addEventListener('click', generateHomePage);
     }
     
+    if (menuButton) {
+        menuButton.addEventListener('click', clearContentDiv);
+        menuButton.addEventListener('click', generateMenu);
+    }
+
+}

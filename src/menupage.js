@@ -279,6 +279,13 @@ export function generateMenu() {
     menuDiv.appendChild(categoryDiv)
     menuDiv.appendChild(menuLayout);
 
+    setCurrentCategory(xfoodArray[0]);
+    generateMenuItems(entreesMenu);
+    changeCategoryView(xfoodArray);
+    }
+  
+}
+
 function generateMenuItems(menu) {
 
     for (let i = 0; i < menu.length; i++) {
@@ -318,15 +325,9 @@ function clearMenuItems() {
 
         //Recreate Div
         let menuLayout = document.createElement('div');
+        let menuDiv = document.querySelector('.menudiv');
         menuLayout.className = 'menulayout';
         menuDiv.className = 'menudiv';
         menuDiv.appendChild(menuLayout);
     }
 }
-    setCurrentCategory(xfoodArray[0]);
-    generateMenuItems(entreesMenu);
-    changeCategoryView(xfoodArray);
-    }
-  
-}
-
