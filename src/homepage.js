@@ -1,18 +1,3 @@
-import {siteStart, addButtonEventListeners} from './view.js';
-import {generateMenu} from './menupage.js';
-
-//Runs when user first arrives at webpage
-
-//If JS warning exists, delete
-let javascriptWarning = document.getElementById('javascriptwarning');
-if (javascriptWarning) {
-    javascriptWarning.remove();
-}
-
-siteStart();
-generateContent();
-generateHomePage();
-addButtonEventListeners();
 
 export function generateHomePage() {
 
@@ -46,9 +31,3 @@ export function generateHomePage() {
     content.appendChild(centerBox);
 }
 
-function generateContent() {
-    let content = document.createElement('div');
-    let body = document.querySelector('.bg');
-    content.id = 'content';
-    body.appendChild(content);
-}

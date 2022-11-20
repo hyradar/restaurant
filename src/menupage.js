@@ -1,4 +1,5 @@
-import { xfoodArray, entrees, setCurrentCategory, entreesMenu, seafoodMenu, mainsMenu, saladsMenu, dessertsMenu, filterArray, updateMenuWithFilters, getCurrentCategory} from './menu.js';
+import { xfoodArray, entrees, entreesMenu, seafoodMenu, mainsMenu, saladsMenu, dessertsMenu, filterArray} from './data.js';
+import {updateMenuWithFilters, setCurrentCategory, getCurrentCategory} from './controller.js';
 
 export function generateMenu() {
 
@@ -78,7 +79,7 @@ export function generateMenu() {
             updateMenuWithFilters(dessertsMenu, filterArray);
             clearMenuItems();
             let category =  getCurrentCategory();
-            switch (category) {
+            switch (category.name) {
                 case 'Entrees': generateMenuItems(entreesMenu);
                     break;
                 case 'Seafood': generateMenuItems(seafoodMenu);
@@ -174,7 +175,7 @@ export function generateMenu() {
             let isCurrentCategory =  getCurrentCategory();
             switch (foodOption.id) {
                 case 'Entreesoption': 
-                    if (isCurrentCategory === 'Entrees') {
+                    if (isCurrentCategory.name === 'Entrees') {
                         break;
                     } else {
                         xfoodArray[0].imageElement.src = xfoodArray[0].normalImage;
@@ -182,7 +183,7 @@ export function generateMenu() {
                         break;
                     }
                 case 'Seafoodoption':  
-                    if (isCurrentCategory === 'Seafood') {
+                    if (isCurrentCategory.name === 'Seafood') {
                         break;
                     } else {
                         xfoodArray[1].imageElement.src = xfoodArray[1].normalImage;
@@ -191,7 +192,7 @@ export function generateMenu() {
                     }
                     break;
                 case 'Mainsoption':
-                    if (isCurrentCategory === 'Mains') {
+                    if (isCurrentCategory.name === 'Mains') {
                         break;
                     } else {
                         xfoodArray[2].imageElement.src = xfoodArray[2].normalImage;
@@ -200,7 +201,7 @@ export function generateMenu() {
                     }  
                     break;
                 case 'Saladsoption':
-                    if (isCurrentCategory === 'Salads') {
+                    if (isCurrentCategory.name === 'Salads') {
                         break;
                     }
                     else {
@@ -210,7 +211,7 @@ export function generateMenu() {
                     }  
                     break;
                 case 'Dessertsoption': 
-                    if (isCurrentCategory === 'Desserts') {
+                    if (isCurrentCategory.name === 'Desserts') {
                         break;
                     }
                     else {
@@ -285,7 +286,7 @@ export function generateMenu() {
   
 }
 
-function generateMenuItems(menu) {
+export function generateMenuItems(menu) {
 
     for (let i = 0; i < menu.length; i++) {
 
