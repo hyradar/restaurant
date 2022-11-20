@@ -90,8 +90,6 @@ export function generateTopBar() {
         let menuButton = document.getElementById('Menubutton');
         menuButton.addEventListener('click', clearContentDiv);
         menuButton.addEventListener('click', generateMenu);
-
-        
     }
     
     //Starts with Desktop HTML
@@ -122,10 +120,8 @@ export function generateTopBar() {
         topRow.appendChild(menuBar);
         body.appendChild(topRow);
 
-        changeBanner();
-            
+        changeBanner();       
     }
-
 
     //Media Queries
     const mediaQueryMax = window.matchMedia('(max-width: 699px');

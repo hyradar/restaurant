@@ -15,7 +15,6 @@ generateContent();
 
 //Not sure why I need to do this twice to make it show up on first page O.o
 generateHomePage();
-generateHomePage();
 
 //I use this code multiple times throughout my code
 //Better to turn it into a module
@@ -59,8 +58,6 @@ export function generateHomePage() {
     content.appendChild(centerBox);
     content.appendChild(centerBox);
 }
-
-clearContentDiv();
 
 //Easier to force topRow and dropDown above Content Div if I generate it with JS
 function generateContent() {

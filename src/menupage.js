@@ -2,9 +2,13 @@ import {changeCategoryView, changeBanner} from './view.js';
 import {entreesMenu, seafoodMenu, mainsMenu, saladsMenu, dessertsMenu, filterArray, entrees, setCurrentCategory, getCurrentCategory, xfoodArray, updateMenuWithFilters} from './menu.js';
 
 export function generateMenu() {
+
     
     let content = document.getElementById('content');
 
+    let checkIfAlreadyGenerated = document.querySelector('.menupagediv');
+    if (!checkIfAlreadyGenerated) {
+  
     //Page Div to manage layout
     let menuPageDiv = document.createElement('div');
     menuPageDiv.className = 'menupagediv';
@@ -323,5 +327,7 @@ function clearMenuItems() {
     setCurrentCategory(xfoodArray[0]);
     generateMenuItems(entreesMenu);
     changeCategoryView(xfoodArray);
+    }
+  
 }
 

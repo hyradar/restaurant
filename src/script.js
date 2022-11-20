@@ -15,12 +15,26 @@ document.addEventListener('click', e => {
     } else if (!menubar && window && e.target.closest('[data-dropdown]') === null && e.target.closest('.dropdown-menu') === null && e.target.closest('.mobilemenubutton') === null) {
         currentDropDown = document.querySelector('.dropdown');
         currentDropDown.classList.remove('active');
+        let x = document.querySelector('.centerbottomblue');
+        if (x) {
+            if (x.style.color != 'rgb(0, 166, 255)') {
+                x.style.color = 'rgb(0, 166, 255)';
+            }
+        }
     };
     
     //Toggles dropdown if button is clicked
     if (isDropDownButton) {
         currentDropDown = document.querySelector('.dropdown');
         currentDropDown.classList.toggle('active');
+        let x = document.querySelector('.centerbottomblue');
+        if (x) {
+            if (x.style.color != 'white') {
+                x.style.color = 'white';
+            } else {
+                x.style.color = 'rgb(0, 166, 255)'
+            }
+        }   
     }
 
     //This code doens't appear to do anything, but didn't want to delete it yet
@@ -33,10 +47,10 @@ document.addEventListener('click', e => {
 //Adds Event Listener to Dropdown Menu Buttons
 export function removeDropDown() {
     document.addEventListener('click', e => {
-        if ( e.target === this) {
+        if (e.target === this) {
             let currentDropDown = document.querySelector('.dropdown');
             if (currentDropDown) {
-                currentDropDown.classList.toggle('active');
+                currentDropDown.classList.remove('active');
             }
         }   
     });
