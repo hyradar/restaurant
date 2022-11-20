@@ -1,6 +1,5 @@
-import {generateTopBar} from './topbar.js';
+import {generateTopBar, clearContentDiv} from './view.js';
 import {generateMenu} from './menupage.js';
-import {clearContentDiv} from './view.js';
 
 //Runs when user first arrives at webpage
 
@@ -20,12 +19,17 @@ generateHomePage();
 //Better to turn it into a module
 //and refactor is so that it is easy to create new pages
 let homeButton = document.getElementById('Homebutton');
-    homeButton.addEventListener('click', clearContentDiv);
-    homeButton.addEventListener('click', generateHomePage);
+    if (homeButton) {
+        homeButton.addEventListener('click', clearContentDiv);
+        homeButton.addEventListener('click', generateHomePage);
+    }
 
 let menuButton = document.getElementById('Menubutton');
-    menuButton.addEventListener('click', clearContentDiv);
-    menuButton.addEventListener('click', generateMenu);
+    if (menuButton) {
+        menuButton.addEventListener('click', clearContentDiv);
+        menuButton.addEventListener('click', generateMenu);
+    }
+    
 
 export function generateHomePage() {
 

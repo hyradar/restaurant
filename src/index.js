@@ -1,5 +1,5 @@
 import './homepage.js';
-import './script.js';
+import './dropdown.js';
 import './style.css';
-import './topbar.js';
 import './menupage.js';
+import './view.js';

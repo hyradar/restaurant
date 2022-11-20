@@ -3,7 +3,6 @@ import {entreesMenu, seafoodMenu, mainsMenu, saladsMenu, dessertsMenu, filterArr
 
 export function generateMenu() {
 
-    
     let content = document.getElementById('content');
 
     let checkIfAlreadyGenerated = document.querySelector('.menupagediv');
