@@ -8,7 +8,7 @@ module.exports = {
         filename: 'main.js',
     },
     devServer: {
-        static: './dist',
+        static: './root',
     },
     module: {
         rules: [
