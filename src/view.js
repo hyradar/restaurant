@@ -1,4 +1,4 @@
-import { xfoodArray } from './menu.js';
+
 import mobileArrow from './images/mobilearrow.svg';
 import seafraLogoBlack from './images/Seafralogo.svg';
 import seafraLogoWhite from './images/seafraLogoWhite.svg';
@@ -6,11 +6,10 @@ import dropDownIcon from './images/dropdownicon.svg';
 import {removeDropDown} from './dropdown.js'
 import { generateMenu } from './menupage';
 import { generateHomePage } from './homepage';
+import { changeBanner } from './menupage';
 
 export function siteStart() {
-    document.title = 'Seafra';
     
-    // Starts with Mobile HTML
     if (window.innerWidth < 700) {
         generateMobile();
     } else {
@@ -79,21 +78,6 @@ function handleMediaQueryMax (e) {
     generateMobile();
 }
 
-//Technically Menu View
-export function changeCategoryView() {
-
-    xfoodArray.forEach((item) => {
-        if (item.isCurrentCategory) {
-            item.imageElement.src = item.colorImage;
-            item.titleElement.style.textDecoration = 'underline';
-            item.titleElement.style.textDecorationColor = 'var(--clr-accent-1)';
-        } else {
-            item.imageElement.src = item.normalImage;
-            item.titleElement.style.textDecoration = 'none';
-        }
-    });
-}
-
 export function clearContentDiv() {
     let content = document.getElementById('content');
     let children = content.children;
@@ -103,21 +87,6 @@ export function clearContentDiv() {
     }
 }
 
-export function changeBanner() {
-    let banner = document.querySelector('.categorytitleimage');
-    xfoodArray.forEach((item) => {
-        if (banner) {
-            if (item.isCurrentCategory) {
-                if (window.innerWidth >= 700) {
-                    banner.src = item.desktopBanner;
-                }
-                else {
-                    banner.src = item.mobileBanner;
-                }
-            }
-        }
-    });
-}
 function generateDesktop() {
     let body = document.querySelector('.bg');
     let menuArray = ['Home', 'Menu', 'Contact', 'Dev Notes'];

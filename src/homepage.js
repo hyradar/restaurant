@@ -1,4 +1,4 @@
-import {siteStart, clearContentDiv, addButtonEventListeners} from './view.js';
+import {siteStart, addButtonEventListeners} from './view.js';
 import {generateMenu} from './menupage.js';
 
 //Runs when user first arrives at webpage
@@ -46,7 +46,6 @@ export function generateHomePage() {
     content.appendChild(centerBox);
 }
 
-//Easier to force topRow and dropDown above Content Div if I generate it with JS
 function generateContent() {
     let content = document.createElement('div');
     let body = document.querySelector('.bg');

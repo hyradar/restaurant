@@ -1,5 +1,4 @@
-import {changeCategoryView, changeBanner} from './view.js';
-import {entreesMenu, seafoodMenu, mainsMenu, saladsMenu, dessertsMenu, filterArray, entrees, setCurrentCategory, getCurrentCategory, xfoodArray, updateMenuWithFilters} from './menu.js';
+import { xfoodArray, entrees, setCurrentCategory, entreesMenu, seafoodMenu, mainsMenu, saladsMenu, dessertsMenu, filterArray, updateMenuWithFilters, getCurrentCategory} from './menu.js';
 
 export function generateMenu() {
 
@@ -330,4 +329,35 @@ function clearMenuItems() {
         menuDiv.className = 'menudiv';
         menuDiv.appendChild(menuLayout);
     }
+}
+
+export function changeBanner() {
+    let banner = document.querySelector('.categorytitleimage');
+    xfoodArray.forEach((item) => {
+        if (banner) {
+            if (item.isCurrentCategory) {
+                if (window.innerWidth >= 700) {
+                    banner.src = item.desktopBanner;
+                }
+                else {
+                    banner.src = item.mobileBanner;
+                }
+            }
+        }
+    });
+}
+
+//Technically Menu View
+export function changeCategoryView() {
+
+    xfoodArray.forEach((item) => {
+        if (item.isCurrentCategory) {
+            item.imageElement.src = item.colorImage;
+            item.titleElement.style.textDecoration = 'underline';
+            item.titleElement.style.textDecorationColor = 'var(--clr-accent-1)';
+        } else {
+            item.imageElement.src = item.normalImage;
+            item.titleElement.style.textDecoration = 'none';
+        }
+    });
 }

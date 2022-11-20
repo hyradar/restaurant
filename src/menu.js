@@ -37,6 +37,7 @@ function foodGroup(name, normalImage, colorImage, mobileBanner, desktopBanner, i
     }
 }
 
+//The only reason I'm exporting this is because I'm hardcoding the default value rather than loading it dynamically
 export let entrees = foodGroup('Entrees', entreesIcon, entreesIconColor, entreeMobileBanner, entreeDesktopBanner, document.getElementById('Entreesmenuicon'), document.getElementById('Entreestitle'), true);
 let seafood = foodGroup('Seafood', seafoodIcon, seafoodIconColor, seafoodMobileBanner, seafoodDesktopBanner, document.getElementById('Seafoodmenuicon'), document.getElementById('Seafoodtitle'), false);
 let mains = foodGroup('Mains', mainsIcon, mainsIconColor, mainsMobileBanner, mainsDesktopBanner, document.getElementById('Mainsmenuicon'), document.getElementById('Mainstitle'), false);
