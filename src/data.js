@@ -1,12 +1,15 @@
+//Black + White Icons
 import entreesIcon from './images/menuicons/wheat.png';
-import entreesIconColor from './images/menuicons/wheatcolor.svg';
 import seafoodIcon from './images//menuicons/prawn.png';
-import seafoodIconColor from './images/menuicons/prawncolor.svg';
 import mainsIcon from './images/menuicons/food-tray.png';
-import mainsIconColor from './images/menuicons/food-traycolor.svg';
 import saladsIcon from './images/menuicons/salad.png';
-import saladsIconColor from './images/menuicons/saladcolor.svg';
 import dessertsIcon from './images/menuicons/cupcake.png';
+
+//Color Icons
+import seafoodIconColor from './images/menuicons/prawncolor.svg';
+import entreesIconColor from './images/menuicons/wheatcolor.svg';
+import mainsIconColor from './images/menuicons/food-traycolor.svg';
+import saladsIconColor from './images/menuicons/saladcolor.svg';
 import dessertsIconColor from './images/menuicons/cupcakecolor.svg';
 
 //Mobile Banners
@@ -37,6 +40,7 @@ function foodGroup(name, normalImage, colorImage, mobileBanner, desktopBanner, i
     }
 }
 
+//The only reason I'm exporting this is because I'm hardcoding the default value rather than loading
 export let entrees = foodGroup('Entrees', entreesIcon, entreesIconColor, entreeMobileBanner, entreeDesktopBanner, document.getElementById('Entreesmenuicon'), document.getElementById('Entreestitle'), true);
 let seafood = foodGroup('Seafood', seafoodIcon, seafoodIconColor, seafoodMobileBanner, seafoodDesktopBanner, document.getElementById('Seafoodmenuicon'), document.getElementById('Seafoodtitle'), false);
 let mains = foodGroup('Mains', mainsIcon, mainsIconColor, mainsMobileBanner, mainsDesktopBanner, document.getElementById('Mainsmenuicon'), document.getElementById('Mainstitle'), false);
@@ -44,26 +48,6 @@ let salads = foodGroup('Salads', saladsIcon, saladsIconColor, saladsMobileBanner
 let desserts = foodGroup('Desserts', dessertsIcon, dessertsIconColor, dessertsMobileBanner, dessertsDesktopBanner, document.getElementById('Dessertsmenuicon'), document.getElementById('Dessertstitle'), false);
 
 export const xfoodArray = [entrees, seafood, mains, salads, desserts];
-
-
-export function getCurrentCategory() {
-    for (let i = 0; i < xfoodArray.length; i++) {
-        if (xfoodArray[i].isCurrentCategory) {
-            return xfoodArray[i].name;
-        }
-    }
-}
-
-export function setCurrentCategory(foodGroup) {
-    xfoodArray.forEach((item) => {
-        if (item != foodGroup) {
-            item.isCurrentCategory = false
-        }
-        else {
-            item.isCurrentCategory = true;
-        }
-    });
-}
 
 function foodItem(name, description, foodGroup, price, canShow, isVegetarian, isVegan, isDairyFree, isGlutenFree, hasTreeNuts, hasPeanuts, hasFish, hasShellfish, hasEgg, hasSoy) {
 
@@ -84,28 +68,6 @@ function foodItem(name, description, foodGroup, price, canShow, isVegetarian, is
         hasEgg,
         hasSoy,
     }
-}
-
-
-export function updateMenuWithFilters(menu, filterArray) {
-    menu.forEach((item) => {
-
-        if ((!item.isVegetarian && filterArray.vegetarianFilter === true)
-          ||(!item.isVegan && filterArray.veganFilter === true)
-          ||(!item.isDairyFree && filterArray.dairyFreeFilter === true)
-          ||(!item.isGlutenFree && filterArray.glutenFreeFilter === true)
-          ||(item.hasTreeNuts && filterArray.treeNutFilter === true)
-          ||(item.hasPeanuts && filterArray.peanutFilter === true)
-          ||(item.hasFish && filterArray.fishFilter === true)
-          ||(item.hasShellfish && filterArray.shellfishFilter === true)
-          ||(item.hasEgg && filterArray.eggFilter === true)
-          ||(item.hasSoy && filterArray.soyFilter === true)
-          ){
-            item.canShow = false;
-        } else {
-            item.canShow = true;
-        }
-    });
 }
 
 export const filterArray = {
