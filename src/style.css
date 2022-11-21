@@ -348,6 +348,7 @@ input.filterinput {
   justify-self: center;
 }
 
+.imagebutton,
 .foodoptionbutton {
   color: black;
   text-decoration: none;
@@ -406,6 +407,8 @@ input.filterinput {
 .menurow {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: .3rem;
   padding: .3rem;
   border-bottom: 1px solid black;
@@ -423,8 +426,26 @@ input.filterinput {
   font-size: 1.1rem;
 }
 
+.itemdescicon {
+  width: 100%;
+}
+
 .itemdesc {
-  text-align: center;
+
+}
+
+.imagebutton {
+  height: 1.5rem;
+  width: 1.5rem;
+  vertical-align: bottom;
+  margin-left: .3rem;
+}
+
+.menuitemicon {
+  width: 1.5rem;
+  height: 1.5rem;
+  align-self: center;
+  vertical-align: bottom;
 }
 
 table {

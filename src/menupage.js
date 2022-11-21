@@ -1,5 +1,6 @@
 import { xfoodArray, entrees, entreesMenu, seafoodMenu, mainsMenu, saladsMenu, dessertsMenu, filterArray} from './data.js';
 import {updateMenuWithFilters, setCurrentCategory, getCurrentCategory} from './controller.js';
+import cameraIcon from './images/menuicons/imageicon.svg';
 
 export function generateMenu() {
 
@@ -298,19 +299,31 @@ export function generateMenuItems(menu) {
             let itemNamePrice = document.createElement('span');
             let itemName = document.createElement('span');
             let itemPrice = document.createElement('span');
+
+            let itemDescIcon = document.createElement('span');
             let itemDesc = document.createElement('span');
-    
+            let imageButton = document.createElement('button');
+            let imageIcon = document.createElement('img');
+            
             itemNamePrice.className = 'itemnameprice';
-            itemDesc.className = 'itemdesc';
-    
             itemName.innerText = menu[i].name;
-            itemDesc.innerText = menu[i].description;
             itemPrice.innerText = menu[i].price;
+
+            itemDescIcon.className = 'itemdescicon';
+            itemDesc.className = 'itemdesc';
+            itemDesc.innerText = menu[i].description;
+            imageButton.className = 'imagebutton';
+            imageIcon.className = 'menuitemicon';
+            imageIcon.src = cameraIcon;            
     
             itemNamePrice.appendChild(itemName);
             itemNamePrice.appendChild(itemPrice);
+
+            imageButton.appendChild(imageIcon);
+            itemDescIcon.appendChild(itemDesc);
+            itemDescIcon.appendChild(imageButton);
             row.appendChild(itemNamePrice);
-            row.appendChild(itemDesc);
+            row.appendChild(itemDescIcon);
             menuLayout.appendChild(row);
         }    
     } 

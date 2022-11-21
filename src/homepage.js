@@ -1,6 +1,5 @@
 export function generateHomePage() {
-
-
+    
     // Generating Center Box
     let content = document.getElementById('content');
     let centerBox = document.createElement('div');
