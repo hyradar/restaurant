@@ -2,7 +2,8 @@ import './style.css';
 //Desktop
 import { generateHomePage } from './homepage.js';
 import { changeBanner } from './menupage.js';
-import {generateDesktop, generateMobile, generateContent, addButtonEventListeners} from './view.js';
+import {generateDesktop, generateMobile, generateContent, addButtonEventListeners, setCurrentPage} from './view.js';
+import {cPage} from './data.js';
 
 //Runs when user first arrives at webpage
 
@@ -18,11 +19,15 @@ generateHomePage();
 addButtonEventListeners();
 
 function siteStart() {
-    
+
     if (window.innerWidth < 700) {
         generateMobile();
+        cPage.currentPage = document.getElementById('Homebutton');
+        setCurrentPage(cPage.currentPage);
     } else {
         generateDesktop();
+        cPage.currentPage = document.getElementById('Homebutton');
+        setCurrentPage(cPage.currentPage);
     }
 
     //Media Queries
@@ -37,7 +42,8 @@ function handleMediaQueryMin (e){
     if (e.matches) {
         generateDesktop();
         addButtonEventListeners();
-        changeBanner();       
+        changeBanner(); 
+        setCurrentPage(cPage.currentPage);
     }
 }
 
@@ -45,4 +51,5 @@ function handleMediaQueryMax () {
     generateMobile();
     addButtonEventListeners();
     changeBanner();
+    setCurrentPage(cPage.currentPage);
 }

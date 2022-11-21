@@ -10,7 +10,8 @@ import dropDownIcon from './images/dropdownicon.svg';
 import {removeDropDown} from './dropdown.js'
 import {generateHomePage } from './homepage';
 import {generateMenu, generateMenuItems} from './menupage';
-import {getCurrentCategory} from './controller';
+import {getCurrentCategory, updateMenuWithFilters} from './controller';
+import { entreesMenu, seafoodMenu, mainsMenu, saladsMenu, dessertsMenu, filterArray, cPage} from './data.js';
 
 export function clearContentDiv() {
     let content = document.getElementById('content');
@@ -51,8 +52,8 @@ export function generateDesktop() {
 
     //If there isn't a toprow (We are arriving for the first time to the site)
     let topRow = document.querySelector('.toprow');
-    if (!topRow) {
-  
+    if (!topRow) {        
+
         //Create TopRow
         let topRow = document.createElement('div');
         topRow.className = 'toprow';
@@ -92,7 +93,7 @@ export function generateDesktop() {
 }
 
 export function generateMobile() {
-    
+
     let findRow = document.querySelector('.toprow');
     if (findRow) {
         findRow.remove();
@@ -178,20 +179,83 @@ export function generateMobile() {
 }
 
 export function addButtonEventListeners() {
+    let logoAnchor = document.querySelector('.logo');
     let homeButton = document.getElementById('Homebutton');
     let menuButton = document.getElementById('Menubutton');
+    let contactButton = document.getElementById('Contactbutton');
+    let devNotesButton = document.getElementById('Dev Notesbutton');
+
+    if (logoAnchor) {
+        logoAnchor.addEventListener('click', () => {
+            clearContentDiv();
+            generateHomePage();
+            setCurrentPage(homeButton);
+        });
+    }
     if (homeButton) {
         homeButton.addEventListener('click', () => {
             clearContentDiv();
             generateHomePage();
+            setCurrentPage(homeButton);
         });
     }
     if (menuButton) {
         menuButton.addEventListener('click', () => {
             clearContentDiv();
+            filterArray.resetFilters();
+            updateMenuWithFilters(entreesMenu, filterArray);
+            updateMenuWithFilters(seafoodMenu, filterArray);
+            updateMenuWithFilters(mainsMenu, filterArray);
+            updateMenuWithFilters(saladsMenu, filterArray);
+            updateMenuWithFilters(dessertsMenu, filterArray);
+            setCurrentPage(menuButton);
+            let x = cPage.currentPage;
+            setCurrentPage(x);
             generateMenu();
             let category = getCurrentCategory();
             generateMenuItems(category);
         });
     }
+    if (contactButton) {
+        contactButton.addEventListener('click', () => {
+            clearContentDiv();
+            filterArray.resetFilters();
+            setCurrentPage(contactButton);
+        });
+    }
+    if (devNotesButton) {
+        devNotesButton.addEventListener('click', () => {
+            clearContentDiv();
+            filterArray.resetFilters();
+            setCurrentPage(devNotesButton);
+        });
+    }
+}
+
+export function setCurrentPage(button) {
+    
+    //Desktop
+    //Sets all buttons to white
+    let menuItems = document.querySelectorAll('.menuitem');
+    menuItems.forEach((item) => {
+        if (item.firstChild != button) {
+            item.firstChild.style.color = 'white';
+        }
+    });
+
+    //Mobile sets buttons to black
+    let dropdown = document.querySelector('.dropdown');
+    let dropdownActive = document.querySelector('.dropdown active');
+    if (dropdown || dropdownActive) {
+        let dropdownItems = document.querySelectorAll('.dropdown-item');
+        dropdownItems.forEach((item) => {
+            if (item.firstChild != button) {
+                item.firstChild.style.color = 'black';
+            }
+        });
+    }
+
+    //Sets currentpage to gold/accent color
+        cPage.currentPage = button;
+        cPage.currentPage.style.color = 'var(--clr-accent-1)';
 }

@@ -171,6 +171,19 @@ export const filterArray = {
             }
     },
 
+    resetFilters: function resetFilters() {
+        this.veganFilter = false;
+        this.dairyFreeFilter = false;
+        this.vegetarianFilter = false;
+        this.glutenFreeFilter = false;
+        this.treeNutFilter = false;
+        this.peanutFilter = false;
+        this.fishFilter = false;
+        this.shellfishFilter = false;
+        this.eggFilter = false;
+        this.soyFilter = false;
+    },
+
     getFilters: function getFilters() {
         let trueFilters = [];
         this.booleanArray.forEach(item => {
@@ -180,6 +193,10 @@ export const filterArray = {
         });
         return trueFilters;
     }
+};
+
+export let cPage = {
+    currentPage: 'x',
 };
 
 //Creating Entree Menu
