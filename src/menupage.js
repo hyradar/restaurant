@@ -1,6 +1,8 @@
 import { xfoodArray, entrees, entreesMenu, seafoodMenu, mainsMenu, saladsMenu, dessertsMenu, filterArray} from './data.js';
 import {updateMenuWithFilters, setCurrentCategory, getCurrentCategory} from './controller.js';
 import cameraIcon from './images/menuicons/imageicon.svg';
+import cameraIconInverted from './images/menuicons/imageiconinverted.svg'
+
 
 export function generateMenu() {
 
@@ -304,6 +306,14 @@ export function generateMenuItems(menu) {
             let itemDesc = document.createElement('span');
             let imageButton = document.createElement('button');
             let imageIcon = document.createElement('img');
+
+            let foodFigure = document.createElement('figure');
+            let hiddenFoodImage = document.createElement('img');
+            
+            hiddenFoodImage.src = menu[i].foodImage;
+            hiddenFoodImage.className = 'hiddenfood';
+            hiddenFoodImage.id = menu[i].name + 'image';
+            foodFigure.id = menu[i].name + 'imagefigure';
             
             itemNamePrice.className = 'itemnameprice';
             itemName.innerText = menu[i].name;
@@ -313,6 +323,10 @@ export function generateMenuItems(menu) {
             itemDesc.className = 'itemdesc';
             itemDesc.innerText = menu[i].description;
             imageButton.className = 'imagebutton';
+            imageIcon.id = menu[i].name + 'button';
+            imageIcon.addEventListener('click', (e) => {
+                hideFood(e), false;
+            });
             imageIcon.className = 'menuitemicon';
             imageIcon.src = cameraIcon;            
     
@@ -320,8 +334,11 @@ export function generateMenuItems(menu) {
             itemNamePrice.appendChild(itemPrice);
 
             imageButton.appendChild(imageIcon);
+            foodFigure.appendChild(hiddenFoodImage);
+
             itemDescIcon.appendChild(itemDesc);
             itemDescIcon.appendChild(imageButton);
+            itemDescIcon.appendChild(foodFigure);
             row.appendChild(itemNamePrice);
             row.appendChild(itemDescIcon);
             menuLayout.appendChild(row);
@@ -374,4 +391,51 @@ export function changeCategoryView() {
             item.titleElement.style.textDecoration = 'none';
         }
     });
+}
+
+function hideFood (e) {
+    
+    //If the click event target ID is the same as the entrees menu id, open the image.
+    let image;
+    let category = getCurrentCategory();
+
+    switch (category.name) {
+        case 'Entrees':
+            entreesMenu.forEach((item) => {
+                if (e.target.id === item.name + 'button') {
+                    image = document.getElementById(item.name + 'image');
+                }
+            });
+        case 'Seafood':
+            seafoodMenu.forEach((item) => {
+                if (e.target.id === item.name + 'button') {
+                    image = document.getElementById(item.name + 'image');
+                }
+            });
+        case 'Mains':
+            mainsMenu.forEach((item) => {
+                if (e.target.id === item.name + 'button') {
+                    image = document.getElementById(item.name + 'image');
+                }
+            });
+        case 'Salads':
+            saladsMenu.forEach((item) => {
+                if (e.target.id === item.name + 'button') {
+                    image = document.getElementById(item.name + 'image');
+                }
+            });
+        case 'Desserts':
+            dessertsMenu.forEach((item) => {
+                if (e.target.id === item.name + 'button') {
+                    image = document.getElementById(item.name + 'image');
+                }
+            });
+    }
+
+    toggleFood(image, e);
+}
+
+function toggleFood (image, e) {
+    e.target.src = ((e.target.src!=cameraIcon) ? cameraIcon : cameraIconInverted);
+    image.style.display = ((image.style.display!='block') ? 'block' : 'none')
 }

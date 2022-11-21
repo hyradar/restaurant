@@ -372,6 +372,10 @@ input.filterinput {
   align-items: center;
 }
 
+.categorytitleimage {
+  width: clamp(15rem, 25vw + 20rem, 60rem);
+}
+
 .menudiv {
   margin-top: 2rem;
   margin-bottom: 5rem;
@@ -430,8 +434,21 @@ input.filterinput {
   width: 100%;
 }
 
-.itemdesc {
+.imagebutton {
+  z-index: 1;
+}
 
+figure {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.hiddenfood {
+  display: none;
+  width: clamp(10rem, 25vw + 10rem, 30rem);
+  margin: .2rem;
 }
 
 .imagebutton {
@@ -503,6 +520,10 @@ tr {
   .filternavinnerdiv {
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(2, 1fr);
+  }
+
+  .categorytitleimage {
+    width: clamp(25rem, 50vw + 30rem, 100%);
   }
 
 }

@@ -26,6 +26,42 @@ import mainsDesktopBanner from './images/categoryimages/mainscategorydesktop.svg
 import saladsDesktopBanner from './images/categoryimages/saladscategorydesktop.svg';
 import dessertsDesktopBanner from './images/categoryimages/dessertscategorydesktop.svg';
 
+//Entree Food Images
+import focacciaImage from './images/food/foccaccia.jpg';
+import carrotLoxImage from './images/food/carrotlox.jpeg';
+import pearlOystersImage from './images/food/pearloysters.jpeg';
+import tempuraCalmariImage from './images/food/tempuracalamari.jpg';
+import buffaloShrimpImage from './images/food/buffaloshrimp.jpg';
+
+//Seafood Food Images
+import scallopsImage from './images/food/scallops.jpg';
+import grilledKingCrabImage from './images/food/grilledkingcrab.jpg';
+import fishTacosImage from './images/food/fishtacos.jpg';
+import veganCrabCakesImage from './images/food/vegancrabcakes.jpg';
+import tunaAuPoivreImage from './images/food/tunaaupoivre.jpg';
+import mixedSeafoodGrillImage from './images/food/mixedseafoodgrill.jpg';
+
+//Mains Food Images
+import mushroomPastaImage from './images/food/mushroompasta.jpg';
+import yellowTailPokeBowlImage from './images/food/yellowtailpokebowl.jpg';
+import seaUrchinSpaghettiImage from './images/food/seaurchinspaghetti.jpg';
+import steakFritesImage from './images/food/steakfrites.jpg';
+import ribeyeImage from './images/food/ribeye.jpg';
+
+//Salads Food Images
+import choppedSaladImage from './images/food/choppedsalad.jpg';
+import icebergWedgeImage from './images/food/icebergwedge.jpg';
+import classicCaesarImage from './images/food/caesarsalad.jpg';
+import greekTomatoSaladImage from './images/food/greektomatosalad.jpg';
+import seafoodSaladImage from './images/food/seafoodsalad.jpg';
+
+//Desserts Food Images
+import peanutButterPieImage from './images/food/peanutbutterpie.jpg';
+import hazelnutPralineImage from './images/food/hazelnutpraline.jpg';
+import bananaCreamNapoleonImage from './images/food/bananacreamnapoleon.jpg';
+import pumpkinSpiceCremeBruleeImage from './images/food/cremebrulee.jpg';
+import veganCaramelGelatoImage from './images/food/gelato.jpg';
+
 //Create Food Groups for Menu
 function foodGroup(name, normalImage, colorImage, mobileBanner, desktopBanner, imageElement, titleElement, isCurrentCategory) {
     return {
@@ -49,7 +85,7 @@ let desserts = foodGroup('Desserts', dessertsIcon, dessertsIconColor, dessertsMo
 
 export const xfoodArray = [entrees, seafood, mains, salads, desserts];
 
-function foodItem(name, description, foodGroup, price, canShow, isVegetarian, isVegan, isDairyFree, isGlutenFree, hasTreeNuts, hasPeanuts, hasFish, hasShellfish, hasEgg, hasSoy) {
+function foodItem(name, description, foodGroup, price, canShow, foodImage, isVegetarian, isVegan, isDairyFree, isGlutenFree, hasTreeNuts, hasPeanuts, hasFish, hasShellfish, hasEgg, hasSoy) {
 
     return {
         name,
@@ -67,6 +103,7 @@ function foodItem(name, description, foodGroup, price, canShow, isVegetarian, is
         hasShellfish,
         hasEgg,
         hasSoy,
+        foodImage,
     }
 }
 
@@ -202,7 +239,7 @@ export let cPage = {
 //Creating Entree Menu
 let focaccia = foodItem(
     //name, description, goodGroup, price, canShow
-    'Cheese-Baked Foccacia', 'Served with House-Cured Olives', 'entrees', 15, true,
+    'Cheese-Baked Foccacia', 'Served with House-Cured Olives', 'entrees', 15, true, focacciaImage,
     
     //isVegetarian, isVegan, isDairyFree, isGlutenFree
     true, true, true, false,
@@ -212,7 +249,7 @@ let focaccia = foodItem(
 
 let carrotLox = foodItem(
     //name, description, goodGroup, price, can show
-    'Carrot Lox', 'carrot strips flavored with tamari, liquid smoke and kelp seasoning', 'entrees', 18, true,
+    'Carrot Lox', 'carrot strips flavored with tamari, liquid smoke and kelp seasoning', 'entrees', 18, true, carrotLoxImage,
     
     //isVegetarian, isVegan, isDairyFree, isGlutenFree
     true, true, true, true,
@@ -222,7 +259,7 @@ let carrotLox = foodItem(
 
 let oysters = foodItem(
     //name, description, goodGroup, price, canShow
-    'Pearl Oysters', 'Six Oysters from Bay of Bedec in New Brunswick, Canada', 'entrees', 21, true,
+    'Pearl Oysters', 'Six Oysters from Bay of Bedec in New Brunswick, Canada', 'entrees', 21, true, pearlOystersImage,
     
     //isVegetarian, isVegan, isDairyFree, isGlutenFree
     false, false, true, true,
@@ -232,7 +269,7 @@ let oysters = foodItem(
 
 let calamari = foodItem(
     //name, description, goodGroup, price
-    'Tempura Calamari', 'served with piparra peppers and a garlic aioli drizzle', 'entrees', 24, true,
+    'Tempura Calamari', 'served with piparra peppers and a garlic aioli drizzle', 'entrees', 24, true, tempuraCalmariImage,
     
     //isVegetarian, isVegan, isDairyFree, isGlutenFree
     false, false, true, true,
@@ -242,7 +279,7 @@ let calamari = foodItem(
 
 let shrimp = foodItem(
     //name, description, goodGroup, price, canShow
-    'Buffalo Shrimp', 'tossed in our signature buffalo sauce, blue cheese dressing', 'entrees', 25, true,
+    'Buffalo Shrimp', 'tossed in our signature buffalo sauce, blue cheese dressing', 'entrees', 25, true, buffaloShrimpImage,
     
     //isVegetarian, isVegan, isDairyFree, isGlutenFree
     false, false, false, true,
@@ -251,10 +288,12 @@ let shrimp = foodItem(
     false, false, false, true, true, false);
 
 
+
 //Creating Seafood Menu
+
 let scallops = foodItem(
     //name, description, goodGroup, price, canShow
-    'Scallops', 'Lightly floured and shallow fried served with a yuzu chipotle aioli', 'seafood', 20, true,
+    'Scallops', 'Lightly floured and shallow fried served with a yuzu chipotle aioli', 'seafood', 20, true, scallopsImage,
     
     //isVegetarian, isVegan, isDairyFree, isGlutenFree
     false, false, false, true,
@@ -265,7 +304,7 @@ let scallops = foodItem(
                         
 let kingCrab = foodItem(
     //name, description, goodGroup, price, canShow
-    'Grilled King Crab', 'Herb-Garlic Butter, Curry Aioli', 'seafood', 25, true,
+    'Grilled King Crab', 'Herb-Garlic Butter, Curry Aioli', 'seafood', 25, true,  grilledKingCrabImage,
 
     //isVegetarian, isVegan, isDairyFree, isGlutenFree
     false, false, false, true,
@@ -275,7 +314,7 @@ let kingCrab = foodItem(
 
 let fishTacos = foodItem(
     //name, description, foodGroup, price, canShow
-    'Fish Tacos', 'Alaskan Halibut, Crispy Batter, Salsa Verde', 'seafood', 26, true,
+    'Fish Tacos', 'Alaskan Halibut, Crispy Batter, Salsa Verde', 'seafood', 26, true,  fishTacosImage,
     
     //isVegetarian, isVegan, isDairyFree, isGlutenFree
     false, false, false, false,
@@ -286,7 +325,7 @@ let fishTacos = foodItem(
 
 let veganCrabCakes = foodItem(
     //name, description, foodGroup, price, canShow
-    'Vegan Crab Cakes', 'Made with hearts of palm and chickpeas for a savory, satisfying appetizer or main course.', 'seafood', 30, true,
+    'Vegan Crab Cakes', 'Made with hearts of palm and chickpeas for a savory, satisfying appetizer or main course.', 'seafood', 30, true,  veganCrabCakesImage,
     
     //isVegetarian, isVegan, isDairyFree, isGlutenFree
     true, true, true, true,
@@ -296,7 +335,7 @@ let veganCrabCakes = foodItem(
 
 let tuna = foodItem(
     //name, description, foodGroup, price, canShow
-    'Tuna au Poivre', 'Green Peppercorn Sauce', 'seafood', 42,  true,
+    'Tuna au Poivre', 'Green Peppercorn Sauce', 'seafood', 42,  true,  tunaAuPoivreImage,
     
     //isVegetarian, isVegan, isDairyFree, isGlutenFree
     false, false, false, false,
@@ -307,7 +346,7 @@ let tuna = foodItem(
                                 
 let mixedSeafoodGrill = foodItem(
     //name, description, foodGroup, price, canShow
-    'Mixed Seafood Grill', 'King Crab, Spanish Octopus, Blue Prawn, Flamed Table-Side', 'seafood', 80,  true,
+    'Mixed Seafood Grill', 'King Crab, Spanish Octopus, Blue Prawn, Flamed Table-Side', 'seafood', 80,  true,  mixedSeafoodGrillImage,
     
     //isVegetarian, isVegan, isDairyFree, isGlutenFree
     false, false, false, true,
@@ -315,10 +354,14 @@ let mixedSeafoodGrill = foodItem(
     //hasTreeNuts, hasPeanuts, hasFish, hasShellfish, hasEgg, hasSoy
     false, false, true, true, true, false);
 
-//Creating Mains Menu
+
+
+    //Creating Mains Menu
+
+
 let mushroomPasta = foodItem(
     //name, description, goodGroup, price, canShow
-    'Woods Mushroom Pasta', 'with Roasted Garlic and Pesto', 'mains', 32, true,
+    'Woods Mushroom Pasta', 'with Roasted Garlic and Pesto', 'mains', 32, true,  mushroomPastaImage,
     
     //isVegetarian, isVegan, isDairyFree, isGlutenFree
     true, true, true, true,
@@ -328,7 +371,7 @@ let mushroomPasta = foodItem(
 
 let pokeBowl = foodItem(
     //name, description, goodGroup, price, canShow
-    'Yellowtail Poke Bowl', 'jasmine rice, edamame, avocado, carrots, red cabbage, cilantro, ginger vinaigrette', 'mains', 36, true,
+    'Yellowtail Poke Bowl', 'jasmine rice, edamame, avocado, carrots, red cabbage, cilantro, ginger vinaigrette', 'mains', 36, true,  yellowTailPokeBowlImage,
     
     //isVegetarian, isVegan, isDairyFree, isGlutenFree
     false, false, false, true,
@@ -338,7 +381,7 @@ let pokeBowl = foodItem(
 
 let urchinSpaghetti = foodItem(
     //name, description, goodGroup, price, canShow
-    'Seat Urchin Spaghetti', 'Japanese Uni, Housemade Pasta, Black Truffle', 'mains', 47, true,
+    'Sea Urchin Spaghetti', 'Japanese Uni, Housemade Pasta, Black Truffle', 'mains', 47, true,  seaUrchinSpaghettiImage,
     
     //isVegetarian, isVegan, isDairyFree, isGlutenFree
     false, false, false, false,
@@ -349,7 +392,7 @@ let urchinSpaghetti = foodItem(
 
 let steakFrites = foodItem(
     //name, description, goodGroup, price, canShow
-    'Steak Frites', 'Wood-Grilled, Truffle Béarnaise', 'mains', 52, true,
+    'Steak Frites', 'Wood-Grilled, Truffle Béarnaise', 'mains', 52, true,  steakFritesImage,
     
     //isVegetarian, isVegan, isDairyFree, isGlutenFree
     false, false, true, false,
@@ -359,7 +402,7 @@ let steakFrites = foodItem(
 
 let ribeye = foodItem(
     //name, description, goodGroup, price, canShow
-    'Grass-Fed Bone-in Ribeye', 'Reidsville, GA', 'mains', 73, true,
+    'Grass-Fed Bone-in Ribeye', 'Reidsville, GA', 'mains', 73, true,  ribeyeImage,
     
     //isVegetarian, isVegan, isDairyFree, isGlutenFree
     false, false, true, true,
@@ -367,10 +410,13 @@ let ribeye = foodItem(
     //hasTreeNuts, hasPeanuts, hasFish, hasShellfish, hasEgg, hasSoy
     false, false, false, false, false, false);
 
+
+
 //Creating Salads Menu
+
 let chopped = foodItem(
     //name, description, goodGroup, price, canShow
-    'Chopped Salad', 'Haricots Verts, Avocado, Almonds', 'salads', 19, true,
+    'Chopped Salad', 'Haricots Verts, Avocado, Almonds', 'salads', 19, true, choppedSaladImage,
     
     //isVegetarian, isVegan, isDairyFree, isGlutenFree
     true, true, true, true,
@@ -380,7 +426,7 @@ let chopped = foodItem(
 
 let wedge = foodItem(
     //name, description, goodGroup, price, canShow
-    'Iceberg Wedge', 'blue cheese dressing, herb vinaigrette, bacon, egg, tomatoes, croutons', 'salads', 20, true,
+    'Iceberg Wedge', 'blue cheese dressing, herb vinaigrette, bacon, egg, tomatoes, croutons', 'salads', 20, true, icebergWedgeImage,
     
     //isVegetarian, isVegan, isDairyFree, isGlutenFree
     true, false, false, false,
@@ -390,7 +436,7 @@ let wedge = foodItem(
 
 let caesar = foodItem(
     //name, description, goodGroup, price, canShow
-    'Classic Caesar', 'Aged Parmesan, Anchovy', 'salads', 21, true,
+    'Classic Caesar', 'Aged Parmesan, Anchovy', 'salads', 21, true, classicCaesarImage,
     
     //isVegetarian, isVegan, isDairyFree, isGlutenFree
     true, false, false, false,
@@ -400,7 +446,7 @@ let caesar = foodItem(
 
 let greek = foodItem(
     //name, description, goodGroup, price, canShow
-    'Greek Tomato Salad', 'Feta, Peppers, Olives', 'salads', 25, true,
+    'Greek Tomato Salad', 'Feta, Peppers, Olives', 'salads', 25, true, greekTomatoSaladImage,
     
     //isVegetarian, isVegan, isDairyFree, isGlutenFree
     true, false, false, true,
@@ -410,7 +456,7 @@ let greek = foodItem(
 
 let seafoodSalad = foodItem(
     //name, description, goodGroup, price, canShow
-    'Signature Seafood Salad', 'alaskan bairdi crab, shrimp, lobster, hearts of palm, avocado, egg, cucumber, olives, tomatoes, scallions, louis dressing and italian vinaigrette', 'salads', 28, true,
+    'Signature Seafood Salad', 'alaskan bairdi crab, shrimp, lobster, hearts of palm, avocado, egg, cucumber, olives, tomatoes, scallions, louis dressing and italian vinaigrette', 'salads', 28, true, seafoodSaladImage,
     
     //isVegetarian, isVegan, isDairyFree, isGlutenFree
     false, false, false, true,
@@ -418,10 +464,14 @@ let seafoodSalad = foodItem(
     //hasTreeNuts, hasPeanuts, hasFish, hasShellfish, hasEgg, hasSoy
     false, false, false, true, true, true);
 
+
+
 //Create Desserts Menu
+
+
 let pie = foodItem(
     //name, description, goodGroup, price, canShow
-    'Peanut Butter Pie', 'with Chocolate gluten-free cust', 'desserts', 10, true,
+    'Peanut Butter Pie', 'with Chocolate gluten-free cust', 'desserts', 10, true, peanutButterPieImage,
     
     //isVegetarian, isVegan, isDairyFree, isGlutenFree
     true, true, true, true,
@@ -431,7 +481,7 @@ let pie = foodItem(
 
 let praline = foodItem(
     //name, description, goodGroup, price, canShow
-    'Hazelnut Praline', 'Chocolate Shell, Salted Caramel', 'desserts', 11, true,
+    'Hazelnut Praline', 'Chocolate Shell, Salted Caramel', 'desserts', 11, true, hazelnutPralineImage,
     
     //isVegetarian, isVegan, isDairyFree, isGlutenFree
     true, true, true, false,
@@ -441,7 +491,7 @@ let praline = foodItem(
 
 let napoleon = foodItem(
     //name, description, goodGroup, price, canShow
-    'Banana Cream Napoleon', 'Warm Caramel, Phyllo, Whipped Cream', 'desserts', 13, true,
+    'Banana Cream Napoleon', 'Warm Caramel, Phyllo, Whipped Cream', 'desserts', 13, true, bananaCreamNapoleonImage,
     
     //isVegetarian, isVegan, isDairyFree, isGlutenFree
     true, false, false, false,
@@ -451,7 +501,7 @@ let napoleon = foodItem(
 
 let cremebrulee = foodItem(
     //name, description, goodGroup, price, canShow
-    'Pumpkin Spice Crème Brûlée', 'Candied Pecans, Pumpkin Gelato', 'desserts', 15, true,
+    'Pumpkin Spice Crème Brûlée', 'Candied Pecans, Pumpkin Gelato', 'desserts', 15, true, pumpkinSpiceCremeBruleeImage,
     
     //isVegetarian, isVegan, isDairyFree, isGlutenFree
     true, false, false, true,
@@ -461,7 +511,7 @@ let cremebrulee = foodItem(
 
 let gelato = foodItem(
     //name, description, goodGroup, price, canShow
-    'Vegan Caramel Gelato', 'Chocolate Shell, Salted Caramel', 'desserts', 17, true,
+    'Vegan Caramel Gelato', 'Chocolate Shell, Salted Caramel', 'desserts', 17, true, veganCaramelGelatoImage,
     
     //isVegetarian, isVegan, isDairyFree, isGlutenFree
     true, true, true, true,
