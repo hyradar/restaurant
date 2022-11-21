@@ -465,7 +465,6 @@ let seafoodSalad = foodItem(
     false, false, false, true, true, true);
 
 
-
 //Create Desserts Menu
 
 
