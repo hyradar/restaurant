@@ -490,11 +490,13 @@ figure {
 }
 
 #contactinfodiv {
-  /* padding: 1rem; */
-  /* height: 20vh; */
+  
   background-color: white;
   display: flex;
   flex-direction: column;
+  margin: 1rem 0 0 0;
+  width: 90%;
+  gap: .2rem;
 }
 
 .infodetailsdiv {
@@ -519,7 +521,9 @@ figure {
 }
 
 #contactform {
-  width: min(100%, 40rem);
+  margin: 1rem;
+  margin-bottom: 0;
+  width: min(90%, 40rem);
 }
 
 textarea {
@@ -529,13 +533,13 @@ textarea {
 #contactsubmitbutton {
   height: 2rem;
   width: 5rem;
-  margin: 1rem;
-  margin-bottom: 0;
+  margin: 1rem 0 0 0;
 }
 
 #inputfieldset {
   display: flex;
   flex-direction: column;
+  margin-top: .5rem;
 }
 
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */

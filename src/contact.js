@@ -61,9 +61,22 @@ export function generateContactPage() {
     let phoneIconImage = document.createElement('img');
     setAttributes(phoneIconImage , {'src': phoneIcon, 'alt': 'Phone Icon', 'class': 'contactpageicon'});
 
+    //Append Divs to contact info box
+    addressDiv.append(mapIconImage, seafraAddress);
+    hoursDiv.append(timeIconImage, seafraHours);
+    phoneDiv.append(phoneIconImage, seafraPhone);
+    
+    infoDiv.append(addressDiv, hoursDiv, phoneDiv);
+
+    //Contact Form
+    let contactForm = document.createElement('form');
+    contactForm.id = 'contactform';
+    
+
     //Email
     let emailDiv = document.createElement('div');
     emailDiv.className = 'infodetailsdiv';
+
 
     let seafraEmail = document.createElement('p');
     seafraEmail.className = 'contactinfobox';
@@ -72,17 +85,8 @@ export function generateContactPage() {
     let emailIconImage = document.createElement('img');
     setAttributes(emailIconImage , {'src': emailIcon, 'alt': 'Email Icon', 'class': 'contactpageicon'});
 
-    //Append Divs to contact info box
-    addressDiv.append(mapIconImage, seafraAddress);
-    hoursDiv.append(timeIconImage, seafraHours);
-    phoneDiv.append(phoneIconImage, seafraPhone);
     emailDiv.append(emailIconImage, seafraEmail);
-    infoDiv.append(addressDiv, hoursDiv, phoneDiv, emailDiv);
 
-    //Contact Form
-    let contactForm = document.createElement('form');
-    contactForm.id = 'contactform';
-    
     //Fieldset for Inputs
     let inputFieldset = document.createElement('fieldset');
     inputFieldset.id = 'inputfieldset';
@@ -120,7 +124,7 @@ export function generateContactPage() {
 
     //Appending Contact Form together
     inputFieldset.append(nameLabel, nameInput, emailLabel, emailInput, messageLabel, messageInput);
-    contactForm.append(inputFieldset, submitButton);
+    contactForm.append(emailDiv, inputFieldset, submitButton);
 
     //Google Maps
     let mapDiv = document.createElement('div');
