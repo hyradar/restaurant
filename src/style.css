@@ -8,7 +8,6 @@
 }
 
 :root {
-  /* Color used in Colored Prawn Icon #E9967A */
   /* Gold color used in logo */
   --clr-accent-1: #d7c516;
   
@@ -94,7 +93,6 @@ body {
 
   display: flex;
   flex-direction: column;
-  /* gap: 1.25rem; */
 }
 
 .dropdown :last-child {
@@ -183,7 +181,6 @@ ul {
 .centerbottomdiv {
   color: #fff;
   font-size: clamp(1.5rem, 2vw + 1rem, 3.5rem);
-  /* z-index: -1; */
 }
 
 .centerbottomblue {
@@ -323,9 +320,7 @@ input.filterinput {
   padding: .5em;
   display: grid;
   justify-content: center;
-  /* grid-template-columns: repeat(5, clamp(2.5rem, 3vw + 3rem, 7rem)); */
   grid-template-columns: repeat(5, clamp(1.5rem, 2vw + 3rem, 7rem));
-  /* grid-template-columns: repeat(5, 2rem); */
   gap: clamp(2rem, 1vw + .5rem, 4.5rem);
   margin-left: .5rem;
   margin-right: .5rem;
@@ -471,10 +466,8 @@ figure {
 #map {
   height: calc(20vw + 10rem);
   min-height: 15rem;
-  /* The height is 400 pixels */
   width: 70vw;
   max-width: 40rem;
-  /* The width is the width of the web page */
   margin-top: 1rem;
   margin-bottom: 3rem;
 }
@@ -484,6 +477,10 @@ figure {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: white;
+  margin-top: 2rem;
+  border-radius: .3rem;
+  border: 2px solid var(--clr-accent-1);
 }
 
 #contactinfodiv {
@@ -491,6 +488,21 @@ figure {
   width: 80vw;
   height: 20vh;
   background-color: white;
+}
+
+#contactform {
+  border: 1px solid var(--clr-accent-1);
+  width: min(100%, 40rem);
+}
+
+#contactsubmitbutton {
+  height: 2rem;
+  width: 5rem;
+}
+
+#inputfieldset {
+  display: flex;
+  flex-direction: column;
 }
 
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
