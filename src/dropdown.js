@@ -36,12 +36,6 @@ document.addEventListener('click', e => {
             }
         }   
     }
-
-    //This code doens't appear to do anything, but didn't want to delete it yet
-    // document.querySelectorAll('[data-dropdown].active').forEach(dropdown => {
-    //     if (dropdown === currentDropDown) return
-    //     dropdown.classList.remove('active')
-    // })  
 });
 
 //Adds Event Listener to Dropdown Menu Buttons

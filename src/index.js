@@ -4,6 +4,7 @@ import { generateHomePage } from './homepage.js';
 import { changeBanner } from './menupage.js';
 import {generateDesktop, generateMobile, generateContent, addButtonEventListeners, setCurrentPage} from './view.js';
 import {cPage} from './data.js';
+import { generateContactPage } from './contact';
 
 //Runs when user first arrives at webpage
 

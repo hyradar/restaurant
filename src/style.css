@@ -76,6 +76,7 @@ body {
   align-content: center;
   position: relative;
   width: 100%;
+  z-index: 1;
 }
 
 .dropdown-menu {
@@ -182,6 +183,7 @@ ul {
 .centerbottomdiv {
   color: #fff;
   font-size: clamp(1.5rem, 2vw + 1rem, 3.5rem);
+  /* z-index: -1; */
 }
 
 .centerbottomblue {
@@ -465,13 +467,30 @@ figure {
   vertical-align: bottom;
 }
 
-table {
-  border: 1px solid black;
+/* Set the size of the div element that contains the map */
+#map {
+  height: calc(20vw + 10rem);
+  min-height: 15rem;
+  /* The height is 400 pixels */
+  width: 70vw;
+  max-width: 40rem;
+  /* The width is the width of the web page */
+  margin-top: 1rem;
+  margin-bottom: 3rem;
 }
 
-tr {
-  border: 1px solid grey;
-  height: 10vh;
+#contactpagediv{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#contactinfodiv {
+  margin-top: 1rem;
+  width: 80vw;
+  height: 20vh;
+  background-color: white;
 }
 
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */

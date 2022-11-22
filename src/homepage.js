@@ -1,3 +1,5 @@
+import {setAttributes} from './view.js';
+
 export function generateHomePage() {
     
     // Generating Center Box
@@ -24,9 +26,6 @@ export function generateHomePage() {
 
     centerBox.appendChild(centerTop);
     centerBox.appendChild(centerBottomDiv);
-    content.appendChild(centerBox);
-    content.appendChild(centerBox);
-    content.appendChild(centerBox);
     content.appendChild(centerBox);
 }
 

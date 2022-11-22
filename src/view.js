@@ -8,7 +8,8 @@ import dropDownIcon from './images/dropdownicon.svg';
 
 //Functions
 import {removeDropDown} from './dropdown.js'
-import {generateHomePage } from './homepage';
+import {generateHomePage } from './homepage.js';
+import {generateContactPage} from './contact';
 import {generateMenu, generateMenuItems} from './menupage';
 import {getCurrentCategory, updateMenuWithFilters} from './controller';
 import { entreesMenu, seafoodMenu, mainsMenu, saladsMenu, dessertsMenu, filterArray, cPage} from './data.js';
@@ -18,7 +19,7 @@ export function clearContentDiv() {
     let children = content.children;
 
     for (let i = 0; i < children.length; i++) {
-            children[i].remove();
+        children[i].remove();
     }
 }
 
@@ -113,13 +114,11 @@ export function generateMobile() {
     topRow.className = 'toprow';
     
     let rowAnchor = document.createElement('a');
-    rowAnchor.href = '#';
-    rowAnchor.className = 'rowanchor';
+    
+    setAttributes(rowAnchor, {'href': '#', 'class': 'rowanchor'});
     
     let rowLogo = document.createElement('img');
-    rowLogo.alt = 'Seafra Logo';
-    rowLogo.className = 'logo';
-    rowLogo.src = seafraLogoBlack;
+    setAttributes(rowLogo, {'alt': 'Seafra Logo', 'class': 'logo', 'src': seafraLogoBlack});
 
     let body = document.querySelector('.bg');
     let content = document.getElementById('content');
@@ -159,8 +158,8 @@ export function generateMobile() {
         dropDownItem.className = 'dropdown-item';
     
         let firstAnchor = document.createElement('a');
+        setAttributes(firstAnchor, {'href': '#'});
         firstAnchor.innerHTML = item;
-        firstAnchor.href = '#';
         firstAnchor.id = item + 'button';
         firstAnchor.addEventListener('click', removeDropDown);
     
@@ -171,8 +170,7 @@ export function generateMobile() {
         arrowImage.src = mobileArrow;
         arrowImage.addEventListener('click', removeDropDown);
     
-        dropDownItem.append(firstAnchor);
-        dropDownItem.append(secondAnchor);
+        dropDownItem.append(firstAnchor, secondAnchor);
         secondAnchor.append(arrowImage);
         dropDownMenu.append(dropDownItem);
     });
@@ -221,6 +219,7 @@ export function addButtonEventListeners() {
             clearContentDiv();
             filterArray.resetFilters();
             setCurrentPage(contactButton);
+            generateContactPage();
         });
     }
     if (devNotesButton) {
@@ -258,4 +257,10 @@ export function setCurrentPage(button) {
     //Sets currentpage to gold/accent color
         cPage.currentPage = button;
         cPage.currentPage.style.color = 'var(--clr-accent-1)';
+}
+
+export function setAttributes(el, attrs) {
+    for (let key in attrs) {
+        el.setAttribute(key, attrs[key]);
+    }
 }
