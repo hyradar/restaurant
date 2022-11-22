@@ -16,11 +16,11 @@ import { entreesMenu, seafoodMenu, mainsMenu, saladsMenu, dessertsMenu, filterAr
 
 export function clearContentDiv() {
     let content = document.getElementById('content');
-    let children = content.children;
+    let children = Array.from(content.children);
 
-    for (let i = 0; i < children.length; i++) {
-        children[i].remove();
-    }
+    children.forEach((child) => {
+        child.remove();
+    });
 }
 
 export function generateContent() {

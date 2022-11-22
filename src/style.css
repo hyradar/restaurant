@@ -382,7 +382,7 @@ input.filterinput {
   width: 80%;
 }
 
-
+.contacttitlecard,
 .menutitlecard {
   width: 80vw;
   display: flex;
@@ -390,6 +390,7 @@ input.filterinput {
   justify-content: center;
 }
 
+.contacttitle,
 .menutitle {
   font-size: clamp(2.9rem, 2vw + 1rem, 3.5rem);
   color: white;
@@ -464,12 +465,11 @@ figure {
 
 /* Set the size of the div element that contains the map */
 #map {
+  margin: 1rem;
   height: calc(20vw + 10rem);
-  min-height: 15rem;
+  min-height: 15rem; 
   width: 70vw;
   max-width: 40rem;
-  margin-top: 1rem;
-  margin-bottom: 3rem;
 }
 
 #contactpagediv{
@@ -478,26 +478,59 @@ figure {
   justify-content: center;
   align-items: center;
   background-color: white;
-  margin-top: 2rem;
   border-radius: .3rem;
   border: 2px solid var(--clr-accent-1);
+
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+  background-color: white;
+  border: 3px solid var(--clr-accent-1);
+  border-radius: 5px;
+  width: 80%;
 }
 
 #contactinfodiv {
-  margin-top: 1rem;
-  width: 80vw;
-  height: 20vh;
+  /* padding: 1rem; */
+  /* height: 20vh; */
   background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.infodetailsdiv {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  width: 100%;
+}
+
+/* .contactinfobox {
+} */
+
+#seafradetailsdiv,
+#contactlogosdiv {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.contactpageicon {
+  width: 2rem;
 }
 
 #contactform {
-  border: 1px solid var(--clr-accent-1);
   width: min(100%, 40rem);
+}
+
+textarea {
+  resize: none;
 }
 
 #contactsubmitbutton {
   height: 2rem;
   width: 5rem;
+  margin: 1rem;
+  margin-bottom: 0;
 }
 
 #inputfieldset {
