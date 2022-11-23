@@ -37,7 +37,7 @@ export function generateDesktop() {
     let menuBar = document.createElement('ul');
     menuBar.className = 'menubar';
 
-    let menuArray = ['Home', 'Menu', 'Contact', 'Dev Notes'];
+    let menuArray = ['Home', 'Menu', 'Contact'];
     menuArray.forEach((item)  => {
         let menuItem = document.createElement('li');
         menuItem.className = 'menuitem';
@@ -108,7 +108,7 @@ export function generateMobile() {
         dropDown.remove();
     }
 
-    let menuArray = ['Home', 'Menu', 'Contact', 'Dev Notes'];
+    let menuArray = ['Home', 'Menu', 'Contact'];
     
     let topRow = document.createElement('div');
     topRow.className = 'toprow';
@@ -181,7 +181,6 @@ export function addButtonEventListeners() {
     let homeButton = document.getElementById('Homebutton');
     let menuButton = document.getElementById('Menubutton');
     let contactButton = document.getElementById('Contactbutton');
-    let devNotesButton = document.getElementById('Dev Notesbutton');
 
     if (logoAnchor) {
         logoAnchor.addEventListener('click', () => {
@@ -220,13 +219,6 @@ export function addButtonEventListeners() {
             filterArray.resetFilters();
             setCurrentPage(contactButton);
             generateContactPage();
-        });
-    }
-    if (devNotesButton) {
-        devNotesButton.addEventListener('click', () => {
-            clearContentDiv();
-            filterArray.resetFilters();
-            setCurrentPage(devNotesButton);
         });
     }
 }

@@ -13,6 +13,7 @@
   
 }
 
+/* Unedited CSS Reset */
 /* Remove default margin */
 body,
 h1,
@@ -27,23 +28,27 @@ dd {
   margin: 0;
 }
 
+/* Unedited CSS Reset */
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
 ul[role='list'],
 ol[role='list'] {
   list-style: none;
 }
 
+/* Unedited CSS Reset */
 /* Set core root defaults */
 html:focus-within {
   scroll-behavior: smooth;
 }
 
+/* Unedited CSS Reset */
 html,
 body {
     height: 100%;
     width: 100%;
 }
 
+/* Unedited CSS Reset */
 /* Set core body defaults */
 body {
   text-rendering: optimizeSpeed;
@@ -256,7 +261,7 @@ svg {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 100%;
+  /* width: 100%; */
 }
 
 .infobox {
@@ -382,16 +387,14 @@ input.filterinput {
   width: 80%;
 }
 
-.contacttitlecard,
-.menutitlecard {
+.titlecard {
   width: 80vw;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.contacttitle,
-.menutitle {
+.title {
   font-size: clamp(2.9rem, 2vw + 1rem, 3.5rem);
   color: white;
   border-bottom: 1px solid #d7c516;
@@ -486,7 +489,6 @@ figure {
   background-color: white;
   border: 3px solid var(--clr-accent-1);
   border-radius: 5px;
-  
 }
 
 #contactinfodiv {
@@ -494,7 +496,6 @@ figure {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* align-items: center; */
   margin: 1em 0 0 0;
   width: min(90%, 40rem);
   gap: .2rem;
@@ -549,6 +550,7 @@ textarea {
   
 }
 
+/* Unedited CSS Reset */
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {

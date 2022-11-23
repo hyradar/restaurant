@@ -11,9 +11,9 @@ export function generateContactPage() {
     //Title Card
     let contactTitle = document.createElement('h1');
     let contactTitleCard = document.createElement('div');
-    contactTitle.className = 'contacttitle';
+    contactTitle.className = 'title';
     contactTitle.innerHTML = 'Contact';
-    contactTitleCard.className = 'contacttitlecard';
+    contactTitleCard.className = 'titlecard';
 
     contactTitleCard.appendChild(contactTitle);
     content.appendChild(contactTitleCard);

@@ -19,9 +19,9 @@ export function generateMenu() {
     //Title Card
     let menuTitle = document.createElement('h1');
     let menuTitleCard = document.createElement('div');
-    menuTitle.className = 'menutitle';
+    menuTitle.className = 'title';
     menuTitle.innerHTML = 'Seafra Menu';
-    menuTitleCard.className = 'menutitlecard';
+    menuTitleCard.className = 'titlecard';
 
     menuTitleCard.appendChild(menuTitle);
     menuPageDiv.appendChild(menuTitleCard);
