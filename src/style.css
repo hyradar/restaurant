@@ -486,16 +486,17 @@ figure {
   background-color: white;
   border: 3px solid var(--clr-accent-1);
   border-radius: 5px;
-  width: 80%;
+  
 }
 
 #contactinfodiv {
-  
   background-color: white;
   display: flex;
   flex-direction: column;
-  margin: 1rem 0 0 0;
-  width: 90%;
+  justify-content: center;
+  /* align-items: center; */
+  margin: 1em 0 0 0;
+  width: min(90%, 40rem);
   gap: .2rem;
 }
 
@@ -503,17 +504,20 @@ figure {
   display: flex;
   align-items: center;
   gap: .5rem;
+  margin-top: 1em;
   width: 100%;
+  font-size: clamp(1rem, 1vw + .4rem, 2rem);
 }
 
-/* .contactinfobox {
-} */
+#seafraemail {
+  font-size: 1.3rem;
+}
 
 #seafradetailsdiv,
 #contactlogosdiv {
   display: flex;
   flex-direction: column;
-  gap: .5rem;
+  gap: .5em;
 }
 
 .contactpageicon {
@@ -521,9 +525,10 @@ figure {
 }
 
 #contactform {
-  margin: 1rem;
+  margin-top: 1.5em;
   margin-bottom: 0;
   width: min(90%, 40rem);
+  border-top: 1px solid black;
 }
 
 textarea {
@@ -540,6 +545,8 @@ textarea {
   display: flex;
   flex-direction: column;
   margin-top: .5rem;
+  border: none;
+  
 }
 
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
@@ -581,6 +588,8 @@ textarea {
   .categorydiv {
     height: clamp(2rem, 3vw + 3rem, 7rem);
   }
+
+  
 }
 
 @media (min-width: 700px) {
@@ -593,5 +602,4 @@ textarea {
   .categorytitleimage {
     width: clamp(25rem, 50vw + 30rem, 100%);
   }
-
 }

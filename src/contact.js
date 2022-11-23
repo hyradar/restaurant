@@ -80,6 +80,7 @@ export function generateContactPage() {
 
     let seafraEmail = document.createElement('p');
     seafraEmail.className = 'contactinfobox';
+    seafraEmail.id = 'seafraemail';
     seafraEmail.innerText = 'Message Us';
     
     let emailIconImage = document.createElement('img');
